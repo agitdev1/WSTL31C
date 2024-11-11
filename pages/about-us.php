@@ -13,7 +13,7 @@ include '../components/navbar.php';
     <div class="main-content">
 <h1>About Us</h1>
 <p>Welcome to our company. We are dedicated to delivering outstanding services and products to our clients. Our team is composed of highly skilled professionals committed to excellence in every project we undertake.</p>
-<p>Founded in 2023, we have grown significantly over the years, thanks to our commitment to continuous improvement and customer satisfaction. We believe in building strong relationships with our clients and always strive to exceed their expectations.</p>
+<p>Founded in 2024, we have grown significantly over the years, thanks to our commitment to continuous improvement and customer satisfaction. We believe in building strong relationships with our clients and always strive to exceed their expectations.</p>
 </div>
     <?php include '../components/footer.php'; ?>
 </body>
