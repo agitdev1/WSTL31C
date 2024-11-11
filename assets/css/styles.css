@@ -1,0 +1,196 @@
+/* Navbar Style */
+.navbar {
+    width: 100%;
+    background-color: #202e3c; 
+    color: #FFFFFF; 
+    padding: 20px 40px; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Arial', sans-serif; 
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #FFFFFF; 
+    font-size: 18px; 
+    padding: 10px 15px; 
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #18BC9C; 
+}
+
+.navbar-logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; 
+}
+
+.navbar-logo img {
+    max-height: 85px; 
+    max-width: 150px;
+    flex-shrink: 0;
+}
+
+/* Footer Style */
+.footer {
+    background-color: #202e3c;
+    color: #f2f2f2;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #f2f2f2;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #18BC9C;
+    text-decoration: none;
+}
+
+.footer-copyright {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* General Body and Font Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #fffaf0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Content Styles */
+.main-content {
+    background-color: #fffaf0;
+    padding: 20px 100px;
+    margin: 10px auto;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.main-content h1, .main-content h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.main-content h1 {
+    color: #444444;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.main-content h2 {
+    color: #444444;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.main-content p {
+    color: #444444;
+    line-height: 1.8;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Button Styles */
+.gradient-button {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 5px;
+}
+
+.gradient-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* Image Styles */
+.banner-image, .sdg-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Flexbox Layout for Content Section */
+.content-section {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    padding: 50px;
+    background-color: #fffaf0;
+}
+
+.content-section p {
+    font-size: 18px;
+}
+
+.content-image {
+    flex: 1;
+    max-width: 50%;
+    margin-right: 25px;
+    border-radius: 8px;
+}
+
+.content-text {
+    flex: 1;
+    max-width: 50%;
+}
+
+/* Middle Line Style */
+.full-width-hr {
+    width: calc(100% + 200px); /* Adjust this value based on the padding of the parent container */
+    margin-left: -100px; /* Half of the added width to center the line */
+    border-color: #ccc; /* Optional: set the color of the hr */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+    }
+
+    .content-image, .content-text {
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .content-image {
+        margin-bottom: 20px;
+    }
+}
