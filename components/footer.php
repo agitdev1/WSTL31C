@@ -3,9 +3,9 @@
 <div class="footer">
     <div class="footer-content">
         <div class="footer-links">
-            <a href="about.php">About Us</a>
-            <a href="privacy.php">Privacy Policy</a>
-            <a href="contact.php">Contact Us</a>
+            <a href="../pages/about-us.php">About Us</a>
+            <a href="../pages/documentation.php">Documentation</a>
+            <a href="../pages/contact.php">Contact Us</a>
         </div>
         <div class="footer-copyright">
             &copy; <?php echo date("Y"); ?> Voluntech. All rights reserved.

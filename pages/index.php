@@ -24,8 +24,8 @@ include '../components/navbar.php';
         </div>
     </div>
     <div class="buttons">
-        <a href="/register.php" class="gradient-button">Register</a>
-        <a href="/login.php" class="gradient-button">Login</a>
+        <a href="../pages/register.php" class="gradient-button">Register</a>
+        <a href="../pages/login.php" class="gradient-button">Login</a>
     </div>
     <br>
     <?php include '../components/footer.php'; ?>

@@ -3,7 +3,7 @@
     width: 100%;
     background-color: #202e3c; 
     color: #FFFFFF; 
-    padding: 20px 40px; 
+    padding: 20px 20px; 
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -25,12 +25,11 @@
 
 .navbar-logo {
     flex: 1;
-    display: flex;
     justify-content: flex-start; 
 }
 
 .navbar-logo img {
-    max-height: 85px; 
+    max-height: 80px; 
     max-width: 150px;
     flex-shrink: 0;
 }
@@ -150,14 +149,14 @@ body {
 /* Flexbox Layout for Content Section */
 .content-section {
     display: flex;
-    align-items: center;
+    align-items: justify;
     margin-top: 5px;
     padding: 50px;
     background-color: #fffaf0;
 }
 
 .content-section p {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .content-image {
