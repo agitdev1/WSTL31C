@@ -60,6 +60,7 @@
     padding: var(--spacing-large) 0;
     text-align: center;
     font-family: var(--main-font-stack);
+    margin-top: auto;
 }
 
 .footer-content {
@@ -89,15 +90,19 @@
 
 /* General Body and Font Styles */
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
     font-family: ubuntu-regular;
     color: #333;
     background-color: var(--body-background-color);
-    margin: 0;
-    padding: 0;
 }
 
 /* Main Content Styles */
 .main-content {
+    flex: 1;
     background-color: var(--body-background-color);
     padding: var(--spacing-large) 100px;
     margin: var(--spacing-small) auto;
