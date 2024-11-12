@@ -8,7 +8,7 @@ include '../components/navbar.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Voluntech</title>
     <link rel="stylesheet" href="../assets/css/styles.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../assets/css/Login.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/form.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="page-container">
