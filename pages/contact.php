@@ -6,14 +6,14 @@ include '../components/navbar.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Voluntech</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
     <div class="main-content">
 <h1>Contact Us</h1>
-<p>This will be the page where we will put the Contact Us part of our website</p>
-<p>Founded in 2024, we have grown significantly over the years, thanks to our commitment to continuous improvement and customer satisfaction. We believe in building strong relationships with our clients and always strive to exceed their expectations.</p>
+<img src="..\assets\images\contruction.png" alt="Construction" width="200" height="200">
+<p style="font-size: 14px; line-height: 1.5;"> Thank you for visiting. Our website is currently under construction, and we’re working hard to create an experience that’s worth the wait. Please check back soon for updates, or sign up to be notified when we launch. We can’t wait to share what’s coming! </p>
 </div>
     <?php include '../components/footer.php'; ?>
 </body>
