@@ -46,7 +46,7 @@ include '../components/navbar.php';
             <div class="advisor_thumb"><img src="../assets/images/pic2.png" alt=""></div>
             <div class="single_advisor_details_info">
                 <h6>Rafael Miguel Gerolaga</h6>
-                <p class="designation">Developer &amp; Marketing Manager</p>
+                <p class="designation">Developer &amp; CFO</p>
                 <div class="social-info">
                     <a href="#"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-twitter"></i></a>
