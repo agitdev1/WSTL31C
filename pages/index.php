@@ -5,6 +5,7 @@ include '../components/navbar.php';
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../assets/css/styles.css">
+
 <Title>Welcome to Voluntech</Title>
 </head>
 <body>

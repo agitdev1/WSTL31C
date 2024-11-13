@@ -65,7 +65,6 @@ body {
 .container a:hover{
     -webkit-text-fill-color: #5d51e5;
     color:#5d51e5;
-<<<<<<< HEAD
     text-decoration: none;
 }
 
@@ -76,8 +75,6 @@ body {
     color: transparent; 
     transition: color 0.3s ease;
     text-align: center;
-=======
->>>>>>> 1f4f9f572020f3fc244ff521f39e388a8420bf61
 }
 
 .form-container a:hover {
