@@ -29,7 +29,7 @@ body {
     text-align: center;
     font-family: "Source Code Pro", monospace;
     margin: 20px;
-    
+
 }
 
 .container h2 {
@@ -46,6 +46,7 @@ body {
     margin-top: 10px;
     color: #666;
 }
+
 .container a {
     /* Link styling with gradient background */
     background: linear-gradient(90deg, #88544d, #8d8f52 40%, #3a9b45 69%, #4d5589);
@@ -54,11 +55,17 @@ body {
     color: transparent; 
     transition: color 0.3s ease;
     font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    display:inline-block;
+    width: 100%;
+    margin: 10px 0;
 }
 
 .container a:hover{
     -webkit-text-fill-color: #5d51e5;
     color:#5d51e5;
+<<<<<<< HEAD
     text-decoration: none;
 }
 
@@ -69,12 +76,15 @@ body {
     color: transparent; 
     transition: color 0.3s ease;
     text-align: center;
+=======
+>>>>>>> 1f4f9f572020f3fc244ff521f39e388a8420bf61
 }
 
 .form-container a:hover {
     -webkit-text-fill-color: #5d51e5;
     color: #5d51e5;
 }
+
 label {
     /* Label styling */
     display: block;
