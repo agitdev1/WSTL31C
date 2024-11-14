@@ -12,26 +12,29 @@ include '../components/navbar2.php';
 </head>
 <body>
     <div class="main-content">
-        <h1>User Profile (Draft)</h1>
+        <h1 class="main-title">User Profile (Draft)</h1>
         <div class="profile-container">
-        <a href="../pages/edit-profile.php" class="edit-button">Edit Profile</a>
+            <a href="../pages/edit-profile.php" class="edit-button gradient-button">Edit Profile</a>
             <div class="profile-header">
                 <img src="../assets/images/profile-placeholder.jpg" alt="Profile Picture" class="profile-picture">
                 <div class="profile-info">
-                    <h2>Car Meowzy</h2>
-                    <p>Email: catmeowzy@example.com</p>
-                    <p>Joined: January 1, 2021</p>
-                </div>
+                    <h2 class="profile-name">Car Meowzy</h2>
+                    <p class="profile-email">Email: catmeowzy@example.com</p>
+                    <p class="profile-joined">Joined: November 1, 2024</p>
+                </div>  
             </div>
+            <hr>
             <div class="profile-details">
-                <h3>About Me</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
-                <h3>Skills</h3>
-                <ul>
+                <h3 class="details-title">About Me</h3>
+                <p class="details-description">Meow me meow mew mew mew mew mew meow me meow me meow me me me meow meow </p>
+                <hr>
+                <h3 class="details-title">Skills</h3>
+                <ul class="skills-list">
                     <li>Communication Skills</li>
                     <li>Project Management</li>
                     <li>Data Analysis</li>
                 </ul>
+                <hr>
                 <h3>Causes I'm Interested In</h3>
                 <ul>
                     <li>No Poverty</li>

@@ -41,7 +41,7 @@ body {
 }
 
 .container p {
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     margin-top: 10px;
     color: #666;
@@ -65,6 +65,16 @@ body {
 .container a:hover{
     -webkit-text-fill-color: #5d51e5;
     color:#5d51e5;
+    text-decoration: none;
+}
+
+.container a { 
+    background: linear-gradient(90deg, #88544d, #8d8f52 40%, #3a9b45 69%, #4d5589);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+    transition: color 0.3s ease;
+    text-align: center;
 }
 
 .form-container a:hover {
@@ -88,7 +98,7 @@ input[type="password"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 15px;
     transition: border-color 0.3s ease;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
@@ -97,7 +107,7 @@ button[type="submit"] {
     display: inline-block;
     width: 100%;
     padding: 12px 100px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     font-family: var(--main-font-stack);
     text-decoration: none;
@@ -125,7 +135,7 @@ button[type="submit"]:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    font-size: 17px;
+    font-size: 15px;
     transition: border-color 0.3s ease;
     cursor: pointer;
     
@@ -140,7 +150,7 @@ button[type="submit"]:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    font-size: 17px;
+    font-size: 15px;
     cursor: pointer;
 }
 @media (max-width: 480px) {
@@ -158,7 +168,7 @@ transition: background-color 0.3s ease; /* Add transition for smooth hover effec
 
 /* size of labels inside the modal*/
 label {
-    font-size: 17px;
+    font-size: 15px;
     margin-bottom: 5px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
