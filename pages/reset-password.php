@@ -28,7 +28,7 @@ include '../components/navbar.php';
                 <p>Founded in 2024, we have grown significantly over the years, thanks to our commitment to continuous improvement and customer satisfaction. We believe in building strong relationships with our clients and always strive to exceed their expectations.</p>
             </div>
         </div>
-        <?php include '../components/footer.php'; ?>
+        <?php require_once '../components/footer.php'; ?>
     </div>
     <script src="../assets/js/reset-password.js"></script>
 </body>

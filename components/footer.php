@@ -3,7 +3,7 @@
 <div class="footer">
     <div class="footer-content">
         <div class="footer-links">
-            <a href="../pages/about-us.php">About Us</a>
+            <a href="../pages/team.php">Our Team</a>
             <a href="../pages/documentation.php">Documentation</a>
             <a href="../pages/contact.php">Contact Us</a>
         </div>

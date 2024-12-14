@@ -37,7 +37,7 @@ include '../components/navbar.php';
         <a href="../pages/login.php" class="gradient-button">Login</a>
     </div>
     <br>
-    <?php include '../components/footer.php'; ?>
+    <?php require_once '../components/footer.php'; ?>
 </body>
 </html>
 

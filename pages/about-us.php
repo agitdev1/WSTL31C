@@ -4,62 +4,25 @@ include '../components/navbar.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Volunteering Events</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/about-us.css">
-    <meta charset="utf-8">
-    <title>Our Creative Team</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div class="container">
-    <div class="header">
-      <br>
-        <h3>Our Creative Team</h3>
-        <p>We’re a team of passionate IT students committed to bringing Voluntech to life. Driven by innovation and a shared vision, we’re building a platform that connects volunteers and organizers to make a meaningful impact.</p>
-    </div>
-    <div class="team">
-        <div class="member">
-            <div class="advisor_thumb"><img src="../assets/images/pfp2.webp" alt=""></div>
-            <div class="single_advisor_details_info">
-                <h6>Agather Medina</h6>
-                <p class="designation">Founder &amp; CEO</p>
-                <div class="social-info">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="member">
-            <div class="advisor_thumb"><img src="../assets/images/pic2.png" alt=""></div>
-            <div class="single_advisor_details_info">
-                <h6>John Matthew Valdoria</h6>
-                <p class="designation">Developer &amp; COO</p>
-                <div class="social-info">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="member">
-            <div class="advisor_thumb"><img src="../assets/images/pfp3.jpg" alt=""></div>
-            <div class="single_advisor_details_info">
-                <h6>Rafael Miguel Gerolaga</h6>
-                <p class="designation">Developer &amp; CFO</p>
-                <div class="social-info">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                </div>
-            </div>
+<div class="main-content">
+    <h1>About Us</h1>
+    <div class="about-section">
+        <div class="about-text">
+            <p>Welcome to Voluntech! We are dedicated to making a positive impact in our community through various initiatives and events. Our team is passionate about bringing people together to support meaningful causes and create lasting change.</p>
+            <p>Our mission is to empower individuals and communities by providing resources, support, and opportunities for growth and development. We believe in the power of collaboration and strive to build strong partnerships with like-minded organizations and individuals.</p>
+            <p>Join us on our journey to make a difference. Whether you are looking to volunteer, donate, or simply learn more about our work, we welcome you to be a part of our community.</p>
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-<?php include '../components/footer.php'; ?>
+
+<?php require_once '../components/footer.php'; ?>
 </body>
 </html>
-
-

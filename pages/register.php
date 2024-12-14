@@ -1,48 +1,5 @@
 <?php
-require '../vendor/autoload.php'; // Include Composer's autoloader
 include '../components/navbar.php';
-
-$client = new MongoDB\Client("mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech"); // Connect to MongoDB
-$collection = $client->yourDatabaseName->volunteers; // Select the database and collection
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
-    $email = $_POST['email'];
-    $password = $_POST['password']; // Consider hashing the password before storing
-    $city = $_POST['city'];
-    $skills = $_POST['skills'];
-    $cause = $_POST['cause'];
-
-    // Create a document to insert
-    $document = [
-        'first_name' => $firstName,
-        'last_name' => $lastName,
-        'age' => $age,
-        'gender' => $gender,
-        'email' => $email,
-        'password' => password_hash($password, PASSWORD_BCRYPT), // Hash the password
-        'city' => $city,
-        'skills' => $skills,
-        'cause' => $cause
-    ];
-
-    // Insert the document into the collection
-    $result = $collection->insertOne($document);
-
-    if ($result->getInsertedCount() === 1) {
-        echo "<script>alert('Registration successful!');
-            setTimeout(function() {
-                window.location.href = '../pages/login.php';
-        }, 1000);
-        </script>";
-    } else {
-        echo "<script>alert('Registration failed. Please try again.');</script>";
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -177,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     <script src="../assets/js/register.js"></script>
-    <?php include '../components/footer.php'; ?>
+    <?php require_once '../components/footer.php'; ?>
 </body>
 </html>
 

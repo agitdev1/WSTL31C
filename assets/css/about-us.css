@@ -1,81 +1,24 @@
-body {
-    margin: 0;
-    font-family: 'Ubuntu', sans-serif;
-    background-color: #fffaf0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.header {
-    margin-bottom: 40px;
-}
-
-.header h3 {
-    font-size: 2.5em;
-    margin: 0;
-}
-
-
-.header p {
-    font-size: 1.2em;
-    color: #555;
-}
-
-.team {
+.about-section {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.member {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    width: 300px;
-    transition: transform 0.3s;
+    background-color: #f9f9f9;
 }
 
-.member:hover {
-        cursor: pointer;
-        background-color: #18bc9b1d;
+.about-image {
+    max-width: 300px;
+    margin-right: 20px;
+    border-radius: 10px;
 }
 
-.advisor_thumb img {
-    width: 85%;
-    border-radius: 15px 15px 0 0;
+.about-text {
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
 }
 
-.single_advisor_details_info {
-    padding: 10px 0;
-}
-
-.single_advisor_details_info h6 {
-    margin: 10px 0 5px;
-    font-size: 1.5em;
-}
-
-.single_advisor_details_info p {
-    margin: 0;
-    color: #777;
-}
-
-.social-info {
-    margin-top: 10px;
-}
-
-.social-info a {
-    margin: 0 5px;
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.social-info a:hover {
-    color: #0056b3;
+.about-text p {
+    margin-bottom: 15px;
 }
