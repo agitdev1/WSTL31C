@@ -1,81 +1,83 @@
-   // Get the modal
-   var modal = document.getElementById("volunteerModal");
+// Get modal elements
+const volunteerModal = document.getElementById("volunteerModal");
+const unjoinModal = document.getElementById("unjoinModal");
 
-   // Get the button that opens the modal
-   var btns = document.getElementsByClassName("volunteer-button");
+// Get buttons
+const volunteerButtons = document.querySelectorAll(".volunteer-button");
+const unjoinButtons = document.querySelectorAll(".unjoin-button");
+const cancelButton = document.getElementById("cancel-button");
+const unjoinCancelButton = document.getElementById("unjoin-cancel-button");
+const joinButton = document.querySelector(".join-button");
+const confirmUnjoinButton = document.querySelector(".confirm-unjoin-button");
 
-   // Get the <span> element that closes the modal
-   var span = document.getElementsByClassName("close")[0];
+// Get close buttons
+const volunteerCloseBtn = volunteerModal.querySelector(".close");
+const unjoinCloseBtn = unjoinModal.querySelector(".close");
 
-   // Loop through all volunteer buttons and add click event
-   for (let i = 0; i < btns.length; i++) {
-       btns[i].addEventListener('click', function(event) {
-           event.preventDefault(); // Prevent form submission
-           openModal(); // Open modal
-           modal.setAttribute('data-current-button-index', i);
-       });
-   }
+// Store the current event buttons
+let currentVolunteerButton;
+let currentUnjoinButton;
 
-   // Attach event listener to the join button in the modal
-   var joinButton = document.querySelector(".join-button");
-   joinButton.onclick = function() {
-       // Get the index of the current volunteer button
-       var currentButtonIndex = modal.getAttribute('data-current-button-index');
-       if (currentButtonIndex !== null) {
-           var volunteerButton = btns[currentButtonIndex];
-           var unjoinButton = volunteerButton.nextElementSibling; // Get the corresponding unjoin button
-           volunteerButton.style.display = "none"; // Hide the Volunteer button
-           unjoinButton.style.display = "inline-block"; // Show the Unjoin button
-       }
-       closeModal(); // Close the modal after joining
-   };
+// Add click event to all volunteer buttons
+volunteerButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        currentVolunteerButton = this;
+        currentUnjoinButton = this.nextElementSibling; // Get the unjoin button
+        volunteerModal.style.display = "block";
+    });
+});
 
-   // Attach event listener to all unjoin buttons
-   var unjoinButtons = document.getElementsByClassName("unjoin-button");
-   for (let i = 0; i < unjoinButtons.length; i++) {
-       unjoinButtons[i].addEventListener('click', function(event) {
-           var volunteerButton = this.previousElementSibling; // Get the corresponding volunteer button
-           this.style.display = "none"; // Hide the Unjoin button
-           volunteerButton.style.display = "inline-block"; // Show the Volunteer button
-       });
-   }
+// Add click event to all unjoin buttons
+unjoinButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        currentUnjoinButton = this;
+        currentVolunteerButton = this.previousElementSibling; // Get the volunteer button
+        unjoinModal.style.display = "block";
+    });
+});
 
-   // When the user clicks on <span> (x), close the modal
-   span.onclick = function() {
-       modal.style.display = "none";
-   }
+// When user clicks Join button
+joinButton.onclick = function() {
+    volunteerModal.style.display = "none";
+    if (currentVolunteerButton && currentUnjoinButton) {
+        currentVolunteerButton.style.display = "none";
+        currentUnjoinButton.style.display = "block";
+    }
+}
 
-   // Function to open the modal and prevent background scrolling
-   function openModal() {
-       modal.style.display = "block";
-       document.body.classList.add('modal-open'); // Add class to prevent scrolling
-   }
+// When user confirms unjoin
+confirmUnjoinButton.onclick = function() {
+    unjoinModal.style.display = "none";
+    if (currentVolunteerButton && currentUnjoinButton) {
+        currentUnjoinButton.style.display = "none";
+        currentVolunteerButton.style.display = "block";
+    }
+}
 
-   // Function to close the modal and restore background scrolling
-   function closeModal() {
-       modal.style.display = "none";
-       document.body.classList.remove('modal-open'); // Remove class to restore scrolling
-   }
+// Close buttons functionality
+volunteerCloseBtn.onclick = function() {
+    volunteerModal.style.display = "none";
+}
 
-   // Attach the closeModal function to the cancel button
-   var cancelButton = document.getElementById("cancel-button");
-   cancelButton.onclick = closeModal;
+unjoinCloseBtn.onclick = function() {
+    unjoinModal.style.display = "none";
+}
 
-   // Attach the closeModal function to the close (x) button
-   var closeButton = document.getElementsByClassName("close")[0];
-   closeButton.onclick = closeModal;
+// Cancel buttons functionality
+cancelButton.onclick = function() {
+    volunteerModal.style.display = "none";
+}
 
-   // Attach the closeModal function to clicks outside the modal
-   window.onclick = function(event) {
-       var modal = document.getElementById("volunteerModal");
-       if (event.target == modal) {
-           closeModal();
-       }
-   };
+unjoinCancelButton.onclick = function() {
+    unjoinModal.style.display = "none";
+}
 
-   // When the user clicks anywhere outside of the modal, close it
-   window.onclick = function(event) {
-       if (event.target == modal) {
-           modal.style.display = "none";
-       }
-   }
+// Close modals when clicking outside
+window.onclick = function(event) {
+    if (event.target == volunteerModal) {
+        volunteerModal.style.display = "none";
+    }
+    if (event.target == unjoinModal) {
+        unjoinModal.style.display = "none";
+    }
+}
