@@ -1,5 +1,141 @@
 <?php
 require_once '../components/navbar2.php';
+require_once '../vendor/autoload.php';
+
+use MongoDB\BSON\ObjectId;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Connect to MongoDB
+try {
+    $uri = "mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech";
+    $client = new MongoDB\Client("mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech");
+    $collection = $client->yourDatabaseName->volunteers;
+} catch (Exception $e) {
+    die("Failed to connect to database: " . $e->getMessage());
+}
+
+// Initialize error and success messages arrays
+$errors = [];
+$success = [];
+// Fetch user data
+try {
+    $userId = $_SESSION['user_id'];
+    $user = $collection->findOne(['_id' => new ObjectId($userId)]);
+    if (!$user) {
+        throw new Exception("User not found");
+    }
+} catch (Exception $e) {
+    $errors[] = "Error retrieving user data: " . $e->getMessage();
+}
+
+$events = [
+    [
+        'image' => '../assets/images/volunteer/cats.jpg',
+        'alt' => 'event 1',
+        'desc' => 'Event Volunteers Needed for Feline Frolic Event',
+        'location' => 'Communa, Makati City, 56789',
+        'date' => 'Dec 20, 2024',
+        'time' => '07:00 AM - 11:00 AM',
+        'organization' => 'Animal Protectors'
+    ],
+    [
+        'image' => '../assets/images/volunteer/marikina.png',
+        'alt' => 'event 2',
+        'desc' => 'Marikina River Clean Up Activity for November 2024',
+        'location' => '123 Marikina, Marikina City, 12345',
+        'date' => 'Jan 10, 2025',
+        'time' => '09:00 AM - 01:00 PM',
+        'organization' => 'Green Earth Volunteers'
+    ],
+    [
+        'image' => '../assets/images/volunteer/forest.png',
+        'alt' => 'event 3',
+        'desc' => 'Be part of our Forest Restoration Activities ',
+        'location' => '456 Forest Ave, Green City, 67890',
+        'date' => 'Feb 20, 2025',
+        'time' => '06:00 AM - 10:00 AM',
+        'organization' => 'Green Living Org'
+    ],
+    [
+        'image' => '../assets/images/volunteer/reading.jpg',
+        'alt' => 'event 4',
+        'desc' => 'Library Reading Program',
+        'location' => '789 Charity Lane, Hope Town, 54321',
+        'date' => 'Mar 15, 2025',
+        'time' => '10:00 AM - 02:00 PM',
+        'organization' => 'Helping Hands'
+    ],
+    [
+        'image' => '../assets/images/volunteer/foster.webp',
+        'alt' => 'event 5',
+        'desc' => 'Brighten a Foster Child\'s Day',
+        'location' => '321 Green Park, Nature City, 98765',
+        'date' => 'Apr 22, 2025',
+        'time' => '07:00 AM - 11:00 AM',
+        'organization' => 'Happy Foundation'
+    ],
+    [
+        'image' => '../assets/images/volunteer/feeding.webp',
+        'alt' => 'event 6',
+        'desc' => 'Feeding Program',
+        'location' => '654 Health Blvd, Wellness City, 11223',
+        'date' => 'May 5, 2025',
+        'time' => '09:00 AM - 03:00 PM',
+        'organization' => 'Life Savers'
+    ]
+];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userId = $_SESSION['user_id'] ?? null; // User ID from session
+    $eventName = $_POST['event_name'] ?? null;
+
+    if (!$userId || !$eventName) {
+        die("Invalid request: User ID or event name is missing.");
+    }
+
+    // Connect to MongoDB collection
+    $collection = $db->users; // Replace 'users' with the actual user collection name
+
+    // Fetch the user document
+    $user = $collection->findOne(['_id' => new MongoDB\BSON\ObjectId($userId)]);
+    if (!$user) {
+        die("User not found.");
+    }
+
+    // Retrieve or initialize volunteer_works
+    $volunteerWorks = $user['volunteer_works'] ?? [];
+
+    // Enforce constraints
+    if (count($volunteerWorks) >= 2) {
+        die("You can only volunteer for up to two events at a time.");
+    }
+    if (in_array($eventName, $volunteerWorks)) {
+        die("You are already signed up for this event.");
+    }
+
+    // Add the event to the volunteer works
+    $volunteerWorks[] = $eventName;
+
+    // Update the database
+    $updateResult = $collection->updateOne(
+        ['_id' => new MongoDB\BSON\ObjectId($userId)],
+        ['$set' => ['volunteer_works' => $volunteerWorks]]
+    );
+
+    if ($updateResult->getModifiedCount() > 0) {
+        echo "<script>alert('Volunteer work added successfully!');</script>";
+    } else {
+        echo "<script>alert('Failed to update volunteer work.');</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,171 @@
 <?php
 require_once '../components/navbar2.php';
-?>
+require_once '../vendor/autoload.php';
+
+// Add this line after the requires
+use MongoDB\BSON\ObjectId;
+
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Connect to MongoDB
+try {
+    $uri = "mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech";
+    $client = new MongoDB\Client("mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech");
+    $collection = $client->yourDatabaseName->volunteers;
+} catch (Exception $e) {
+    die("Failed to connect to database: " . $e->getMessage());
+}
+
+// Initialize error and success messages arrays
+$errors = [];
+$success = [];
+// Fetch user data
+try {
+    $userId = $_SESSION['user_id'];
+    $user = $collection->findOne(['_id' => new ObjectId($userId)]);
+    if (!$user) {
+        throw new Exception("User not found");
+    }
+} catch (Exception $e) {
+    $errors[] = "Error retrieving user data: " . $e->getMessage();
+}
+
+
+// Input validation function
+function validateInput($data) {
+    $errors = [];
+    
+    // Validate required fields
+    $requiredFields = ['first_name', 'last_name', 'mobile_number', 'city', 'region'];
+    foreach ($requiredFields as $field) {
+        if (empty($data[$field])) {
+            $errors[] = ucfirst(str_replace('_', ' ', $field)) . " is required";
+        }
+    }
+
+    // Validate mobile number format
+    if (!empty($data['mobile_number']) && !preg_match('/^09\d{9}$/', $data['mobile_number'])) {
+        $errors[] = "Mobile number must be in 11-digit format starting with 09";
+    }
+
+    // Validate date
+    if (!checkdate($data['month'], $data['day'], $data['year'])) {
+        $errors[] = "Invalid date selected";
+    }
+
+    return $errors;
+}
+
+// Sanitize input function
+function sanitizeInput($data) {
+    $sanitized = [];
+    foreach ($data as $key => $value) {
+        if (is_string($value)) {
+            $sanitized[$key] = htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
+        } else {
+            $sanitized[$key] = $value;
+        }
+    }
+    return $sanitized;
+}
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize input
+    $sanitizedData = sanitizeInput($_POST);
+    
+    // Validate input
+    $validationErrors = validateInput($sanitizedData);
+    
+    if (empty($validationErrors)) {
+        try {
+            $updateData = [
+                'first_name' => $sanitizedData['first_name'],
+                'last_name' => $sanitizedData['last_name'],
+                'birthday' => [
+                    'month' => (int)$sanitizedData['month'],
+                    'day' => (int)$sanitizedData['day'],
+                    'year' => (int)$sanitizedData['year']
+                ],
+                'gender' => $sanitizedData['gender'],
+                'marital_status' => $sanitizedData['marital_status'],
+                'mobile_number' => $sanitizedData['mobile_number'],
+                'city' => $sanitizedData['city'],
+                'region' => $sanitizedData['region'],
+                'nationality' => $sanitizedData['nationality'],
+                'skills' => $sanitizedData['skills'] ?? [],
+                'cause' => $sanitizedData['cause'] ?? []
+            ];
+
+            $result = $collection->updateOne(
+                ['_id' => $userId],
+                ['$set' => $updateData]
+            );
+
+            if ($result->getModifiedCount() > 0) {
+                $success[] = "Profile updated successfully!";
+                // Refresh user data
+                $user = $collection->findOne(['_id' => $userId]);
+            } else {
+                $errors[] = "No changes were made to the profile.";
+            }
+        } catch (Exception $e) {
+            $errors[] = "Error updating profile: " . $e->getMessage();
+        }
+    } else {
+        $errors = array_merge($errors, $validationErrors);
+    }
+}
+
+// Add client-side validation
+$clientValidation = <<<JS
+<script>
+document.querySelector('.profile-form').addEventListener('submit', function(e) {
+    let errors = [];
+    const mobileNumber = document.getElementById('mobile_number').value;
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+
+    if (!firstName) errors.push('First name is required');
+    if (!lastName) errors.push('Last name is required');
+    if (!mobileNumber.match(/^09\d{9}$/)) {
+        errors.push('Mobile number must be in 11-digit format starting with 09');
+    }
+
+    if (errors.length > 0) {
+        e.preventDefault();
+        alert(errors.join('\\n'));
+    }
+});
+</script>
+JS;
+
+// Display error and success messages
+if (!empty($errors)): ?>
+    <div class="alert alert-danger">
+        <?php foreach ($errors as $error): ?>
+            <p><?php echo $error; ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+<?php if (!empty($success)): ?>
+    <div class="alert alert-success">
+        <?php foreach ($success as $message): ?>
+            <p><?php echo $message; ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,52 +270,6 @@ require_once '../components/navbar2.php';
                 <input class="form-control" id="region" name="region" type="text">
             </div>
             <div class="form-group">
-            <label for="country">Country</label>
-            <?php
-            $countries = [
-                "Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", 
-                "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", 
-                "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", 
-                "Bolivia", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", 
-                "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", 
-                "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", 
-                "Colombia", "Comoros", "Congo", "Congo, The Democratic Republic of The", "Cook Islands", "Costa Rica", 
-                "Cote D'ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", 
-                "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", 
-                "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", 
-                "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", 
-                "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-bissau", "Guyana", 
-                "Haiti", "Heard Island and Mcdonald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", 
-                "Hungary", "Iceland", "India", "Indonesia", "Iran, Islamic Republic of", "Iraq", "Ireland", "Isle of Man", 
-                "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", 
-                "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", 
-                "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", 
-                "Macao", "Macedonia, The Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", 
-                "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", 
-                "Moldova, Republic of", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", 
-                "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", 
-                "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", 
-                "Palau", "Palestinian Territory, Occupied", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", 
-                "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", 
-                "Rwanda", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Pierre and Miquelon", 
-                "Saint Vincent and The Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", 
-                "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", 
-                "Somalia", "South Africa", "South Georgia and The South Sandwich Islands", "Spain", "Sri Lanka", "Sudan", 
-                "Suriname", "Svalbard and Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan", 
-                "Tajikistan", "Tanzania, United Republic of", "Thailand", "Timor-leste", "Togo", "Tokelau", "Tonga", 
-                "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", 
-                "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", 
-                "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Viet Nam", "Virgin Islands, British", "Virgin Islands, U.S.", 
-                "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"
-            ];
-            ?>
-            <select id="country" name="country" class="form-control">
-                <?php foreach ($countries as $country): ?>
-                    <option value="<?= $country ?>"><?= $country ?></option>
-                <?php endforeach; ?>
-            </select>
-            </div>
-            <div class="form-group">
             <label for="nationality">Nationality</label>
             <?php
             $nationalities = [
@@ -210,10 +329,11 @@ require_once '../components/navbar2.php';
                         <label><input type="checkbox" value="Public Speaking and Presentation"> Public Speaking and Presentation</label>
                     </div>
                 </div>
+
             </div>
                 <br>
 <div class="form-group">
-    <label for="causes">Causes</label>
+    <label for="cause">Causes</label>
     <div class="dropdown">
         <div class="selected-items" id="selectedCauses">Select Causes</div>
         <div class="dropdown-content">
@@ -235,10 +355,13 @@ require_once '../components/navbar2.php';
             <label><input type="checkbox" value="Peace, Justice, and Strong Institutions"> Peace, Justice, and Strong Institutions</label>
         </div>
     </div>
+
 </div>
     </div>
+    <button class="update" type="submit">Update</button>
                 </div>
             </div>
+
         </div>
     </div>
     <?php require_once '../components/footer2.php'; ?>

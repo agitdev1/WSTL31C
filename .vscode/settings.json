@@ -1,3 +1,7 @@
 {
-    "codium.codeCompletion.enable": true
+    "codium.codeCompletion.enable": true,
+    "php.stubs": [
+        "mongodb",
+        "*"
+    ]
 }
