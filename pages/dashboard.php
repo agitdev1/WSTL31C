@@ -18,40 +18,39 @@ include '../components/navbar2.php';
     <div class="sidebar">
             <ul class="menu">
                 <li class="menu-item active"><a href="../pages/dashboard.php">User Dashboard</a></li>
-                <li class="menu-item"><a href="../pages/history.php">My History</a></li>                
                 <li class="menu-item "><a href="../pages/profile.php">Profile</a></li>
-                <li class="menu-item "><a href="../pages/account.php">Account</a></li>                
+                <li class="menu-item"><a href="../pages/history.php">My History</a></li>                
                 <li class="menu-item"><hr></li>
                 <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
             </ul>
         </div>
         <div class="content">
-            <h1 class="greeting">Hi, Meowzy!</h1>
+            <h1 class="greeting">Hi, Juan!</h1>
             <hr class="divider">
             <h2 class="dashboard-title">Dashboard</h2>
             <div class="cards">
                 <div class="card">
-                    <h3 class="card-value">0</h3>
+                    <h3 class="card-value">9</h3>
                     <p class="card-description">
                         Total Volunteer of Hours
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="card-value">0</h3>
+                    <h3 class="card-value">₱ 2250</h3>
                     <p class="card-description">
                     Total Donations (PHP)
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="card-value">0</h3>
+                    <h3 class="card-value">3</h3>
                     <p class="card-description">
                         Total Events Joined
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="card-value">0</h3>
+                    <h3 class="card-value">₱ 750</h3>
                     <p class="card-description">
-                       Average Contributions
+                       Average Contributions (PH
                     </p>
                     </div>
                 </div>
@@ -62,5 +61,4 @@ include '../components/navbar2.php';
 </body>
 </html>
 
-<!-- should be able to fetch in the database the total number of volunteer hours, total donations, total events joined, and average contributions 
-sample code
+<!-- should be able to fetch in the database the total number of volunteer hours, total donations, total events joined, and average contributions -->

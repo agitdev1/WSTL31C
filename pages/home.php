@@ -9,78 +9,89 @@ include '../components/navbar2.php';
     <title>Home</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/home.css">
-
 </head>
 <body>
-    <div class="main-content">
-    <a class="featured" href="events.php"> <h1>Upcoming Events</h1></a>
-        <div class="gallery">
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer1    .webp">
-                    <img src="../assets/images/event1.jpg" alt="event 1">
-                </a>
-                <div class="desc">Event Volunteers Needed for Feline Frolic Event</div>
-            </div>
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer2.jpg">
-                    <img src="../assets/images/event2.jpg" alt="event 2">
-                </a>
-                <div class="desc"> Luntiang Marikina: Marikina River Clean Up Activity for November 2024</div>
-            </div>
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer3.webp">
-                    <img src="../assets/images/event3.png" alt="event 3">
-                </a>
-                <div class="desc">Sacks of Rice for Karinderia ni Mang Urot </div>
-            </div>
-        </div>
-        <!--end of upcoming events section-->
-        <br>
-        <a class="featured" href="volunteer.php"> <h1>Featured Volunteer Events</h1></a>
-        <div class="gallery">
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer1.webp">
-                    <img src="../assets/images/event4.jpeg" alt="volunteer 1">
-                </a>
-                <div class="desc">Teaching Financial Literacy to Kids</div>
-            </div>
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer2.jpg">
-                    <img src="../assets/images/event5.jpeg" alt="volunteer 2">
-                </a>
-                <div class="desc">Brighten a Foster Child's Day</div>
-                </div>
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer3.webp">
-                    <img src="../assets/images/event6.jpeg" alt="volunteer 3">
-                </a>
-                <div class="desc">Feeding Program </div>
-            </div>
-        </div>
-        <!--end of featured volunteer events section-->
-        <br>
-        <a class="featured" href="donate.php"> <h1>Featured Donation Events</h1></a>
-        <div class="gallery">
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer1.webp">
-                    <img src="../assets/images/donate1.jpeg" alt="donate 1">
-                </a>
-                <div class="desc">Operation Tulong Lycean: Donation for Bagyon Kristine Victims</div>
-            </div>
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer2.jpg">
-                    <img src="../assets/images/donate2.jpg" alt="donate 2">
-                </a>
-                <div class="desc">Dugong Lycean Para sa Bayan: A Blood Donation Drive </div>
-            </div>
-            <div class="gallery-item">
-                <a target="_blank" href="../assets/images/volunteer3.webp">
-                    <img src="../assets/images/donate3.jpg" alt="donate 3">
-                </a>
-                <div class="desc">Underwear Donation for Typhoon Survivors</div>
-            </div>
-        </div>
-    </div>
-    <?php require_once '../components/footer2.php'; ?>
+<div class="main-content">
+
+    <?php
+    $sections = [
+        "Upcoming Events" => [
+            "link" => "events.php",
+            "items" => [
+                [
+                    "image" => "../assets/images/event1.jpg",
+                    "link" => "../pages/events.php",
+                    "description" => "Event Volunteers Needed for Feline Frolic Event"
+                ],
+                [
+                    "image" => "../assets/images/event2.jpg",
+                    "link" => "../pages/events.php",
+                    "description" => "Luntiang Marikina: Marikina River Clean Up Activity for November 2024"
+                ],
+                [
+                    "image" => "../assets/images/event3.png",
+                    "link" => "../pages/events.php",
+                    "description" => "Sacks of Rice for Karinderia ni Mang Urot"
+                ],
+            ]
+        ],
+        "Featured Volunteer Events" => [
+            "link" => "volunteer.php",
+            "items" => [
+                [
+                    "image" => "../assets/images/event4.jpeg",
+                    "link" => "../pages/volunteer.php",
+                    "description" => "Teaching Financial Literacy to Kids"
+                ],
+                [
+                    "image" => "../assets/images/event5.jpeg",
+                    "link" => "../pages/volunteer.php",
+                    "description" => "Brighten a Foster Child's Day"
+                ],
+                [
+                    "image" => "../assets/images/event6.jpeg",
+                    "link" => "../pages/oops.php",
+                    "description" => "Feeding Program"
+                ],
+            ]
+        ],
+        "Featured Donation Events" => [
+            "link" => "donate.php",
+            "items" => [
+                [
+                    "image" => "../assets/images/donate1.jpeg",
+                    "link" => "../pages/donate.php",
+                    "description" => "Operation Tulong Lycean: Donation for Bagyon Kristine Victims"
+                ],
+                [
+                    "image" => "../assets/images/donate2.jpg",
+                    "link" => "../pages/donate.php",
+                    "description" => "Dugong Lycean Para sa Bayan: A Blood Donation Drive"
+                ],
+                [
+                    "image" => "../assets/images/donate3.jpg",
+                    "link" => "../pages/donate.php",
+                    "description" => "Underwear Donation for Typhoon Survivors"
+                ],
+            ]
+        ],
+    ];
+
+    foreach ($sections as $title => $data) {
+        echo "<a class='featured' href='{$data['link']}'><h1>$title</h1></a>";
+        echo "<div class='gallery'>";
+        foreach ($data['items'] as $item) {
+            echo "<div class='gallery-item'>";
+            echo "<a href='{$item['link']}'>";
+            echo "<img src='{$item['image']}' alt='event'>";
+            echo "</a>";
+            echo "<div class='desc'>{$item['description']}</div>";
+            echo "</div>";
+        }
+        echo "</div><br>";
+    }
+    ?>
+</div>
+<?php require_once '../components/footer2.php'; ?>
 </body>
 </html>

@@ -1,5 +1,16 @@
 <?php
 include '../components/navbar2.php';
+session_start();
+
+// Configuration
+$config = [
+    'pdfPath' => '../assets/documents/sample.pdf',  // Update with your PDF path
+    'fileName' => 'document.pdf'
+];
+// Generate CSRF token if not exists
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,14 +19,25 @@ include '../components/navbar2.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/documentation.css">
+
 </head>
 <body>
     <div class="main-content">
 <h1>Documentation</h1>
-<img src="..\assets\images\contruction.png" alt="Construction" width="200" height="200">
-<p style="font-size: 14px; line-height: 1.5;"> Thank you for visiting. Our website is currently under construction, and we’re working hard to create an experience that’s worth the wait. Please check back soon for updates, or sign up to be notified when we launch. We can’t wait to share what’s coming! </p>
+<div class="pdf-container">
+        <div class="pdf-header">
+            <button class="control-button" id="openTabBtn">
+                <i class="fas fa-external-link-alt"></i> Open in New Tab
+            </button>
+        </div>
+        <div class="pdf-frame">
+            <iframe id="pdfViewer" src="..\assets\pdf\WSTL31C-DOCUMENTATION.pdf" type="application/pdf"></iframe>
+        </div>
+    </div>
 </div>
 <?php require_once '../components/footer2.php'; ?>
+<script src="../assets/js/documentation.js"></script>
 </body>
 </html>
 

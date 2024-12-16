@@ -10,8 +10,7 @@ require_once '../components/navbar2.php';
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/css/modal-volunteer.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="main-content">
@@ -77,24 +76,26 @@ require_once '../components/navbar2.php';
 
         foreach ($events as $event) {
             echo '<div class="gallery-item">';
-            echo '<a target="_blank" href="https://via.placeholder.com/300x200" rel="noopener noreferrer">';
+            echo '<a target="_blank" href="../pages/oops.php" rel="noopener noreferrer">';
             echo '<img src="' . $event['image'] . '" alt="' . $event['alt'] . '">';
             echo '</a>';
             echo '<div class="desc">' . $event['desc'] . '</div>';
-            echo '<p class="card-location"><i class="fa fa-location-arrow" aria-hidden="true"></i><small>' . $event['location'] . '</small></p>';
-            echo '<p><i class="fa fa-calendar" aria-hidden="true"></i><small>' . $event['date'] . '</small></p>';
-            echo '<p><i class="fa fa-clock-o" aria-hidden="true"></i><small>' . $event['time'] . '</small></p>';
-            echo '<p class="card-organization"><i class="fa fa-users" aria-hidden="true"></i><small>' . $event['organization'] . '</small></p>';
-            echo '<form action="process_registration.php" method="POST">';
+            echo '<p class="card-location"><i class="fa fa-location-arrow""></i><small>' . $event['location'] . '</small></p>';
+            echo '<p><i class="fa fa-calendar"></i><small>' . $event['date'] . '</small></p>';
+            echo '<p><i class="fa fa-clock"></i> <small>' . $event['time'] . '</small></p>';
+            echo '<p class="card-organization"><i class="fa fa-users"></i><small>' . $event['organization'] . '</small></p>';
+            echo '</a>';            
             echo '<input type="hidden" name="event_name" value="' . $event['desc'] . '">';
             echo '<input type="hidden" name="location" value="' . $event['location'] . '">';
             echo '<input type="hidden" name="start_date" value="' . $event['date'] . '">';
             echo '<input type="hidden" name="end_date" value="' . $event['date'] . '">';
             echo '<input type="hidden" name="time" value="' . $event['time'] . '">';
             echo '<input type="hidden" name="organization" value="' . $event['organization'] . '">';
+            echo '<div class="button-container">'; // Start of the container for buttons
             echo '<button type="button" class="volunteer-button">Volunteer</button>';
-            echo '<button type="button" class="unjoin-button" style="display:none;">Unjoin</button>'; //This button should decrement the number of volunteers in the database//
-            echo '</form>';
+            echo '<button type="button" class="unjoin-button" data-bs-toggle="modal" data-bs-target="#unjoinModal" style="display:none;">Unjoin</button>'; //This button should decrement the number of volunteers in the database//
+            ;
+            echo '</div>';
             echo '</div>';
         }
         ?>
@@ -102,19 +103,30 @@ require_once '../components/navbar2.php';
 </div>
 <div id="volunteerModal" class="modal">
     <div class="modal-content">
-
         <span class="close">&times;</span>
-        <p>Hi <strong>Meowzy<!-- Should display current user--></strong>!</p>
+        <p>Hi <strong>Juan</strong>!</p>
         <p>Before you click 'Join' please note that clicking this button means you will be given a slot for this volunteer opportunity. We've prepared this event so you could have a great time volunteering. We are really counting on you to show up!</p>
         <p>In the case that you're unable to attend the event, please go to your dashboard and click the 'Unjoin' button to give other volunteers an opportunity to attend. You can also contact the person in charge to give a heads up. We hope to see you soon!</p>
         <hr>
         <div class="modal-footer">
-        <button class="cancel-button" id="cancel-button">Cancel</button>
-        <button class="join-button">Join</button> <!--  this button should increment the number of volunteers in the event in the database -->
+            <button class="cancel-button" id="cancel-button">Cancel</button>
+            <button class="join-button">Join</button>
+        </div>
     </div>
 </div>
+
+<div id="unjoinModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Are you sure you want to unjoin this volunteer event?</p>
+        <hr>
+        <div class="modal-footer">
+            <button class="cancel-button" id="unjoin-cancel-button">Cancel</button>
+            <button class="confirm-unjoin-button">Confirm</button>
+        </div>
     </div>
 </div>
+
 <?php require_once '../components/footer.php'; ?>
 <script src="../assets/js/modal-volunteer.js"></script>
 </body>

@@ -13,6 +13,7 @@ include '../components/navbar.php';
 </head>
 <body>
 <div class="main-content">
+<img src="../assets/images/banner.jpg" alt="Volunteering Events Banner" class="banner-image">
     <h1>About Us</h1>
     <div class="about-section">
         <div class="about-text">
