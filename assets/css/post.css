@@ -55,3 +55,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.section-link {
+    text-decoration: none; 
+    color: #202e3c;
+    display: block; 
+}

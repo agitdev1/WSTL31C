@@ -31,7 +31,7 @@
 
         <!-- Donations History -->
         <div id="donations" class="history-section">
-            <h2>Donation History</h2>
+            <h2>Fundraising History</h2>
             <table class="history-table">
                 <thead>
                     <tr>
@@ -74,7 +74,7 @@
 
         <!-- Volunteering History -->
         <div id="volunteering" class="history-section" style="display: none;">
-            <h2>Volunteering History</h2>
+            <h2>Volunteering Projects History</h2>
             <table class="history-table">
                 <thead>
                     <tr>
