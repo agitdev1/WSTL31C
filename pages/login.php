@@ -14,7 +14,7 @@ include '../components/navbar.php';
     <div class="page-container">
         <div class="content-wrap">
             <div class="form-container">
-                <form action="home.php" method="post" class="form">
+            <form action="login-handler.php" method="post" class="form">
                     <h1 class="form-h1">Already have an account? </h1>
                     <h2 class="form-h2">Log in to your account</h2>
                     <input type="text" id="email" name="email" placeholder="Email" required>
