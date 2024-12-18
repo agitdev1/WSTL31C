@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: home.php');
         exit();
     } else {
-        // Handle invalid email or redirect to a default page
-        header('Location: error.php'); // You can create an error page or redirect to a default page
+        // Output JavaScript to show an alert for invalid email
+        echo "<script>alert('Invalid email address. Please try again.'); window.history.back();</script>";
         exit();
     }
 }
