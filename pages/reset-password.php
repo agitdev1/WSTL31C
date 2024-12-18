@@ -44,26 +44,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         // Send OTP via email
                         try {
                             $mail = new PHPMailer(true);
-        
+                            
                             // Server settings
                             $mail->isSMTP();
-                            $mail->Host       = 'sandbox.smtp.mailtrap.io';
-                            $mail->SMTPAuth   = true;
-                            $mail->Username   = getenv('5c4dc514684dd1');
-                            $mail->Password   = getenv('204f6aaf4083dc');
-                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                            $mail->Port       = 2525;
-        
+                            $mail->Host = 'live.smtp.mailtrap.io';
+                            $mail->SMTPAuth = true;
+                            $mail->Port = 587;
+                            $mail->Username = 'api';
+                            $mail->Password = '809d331ae047851b599cda694dec80e3';
+                            
                             // Recipients
-                            $mail->setFrom('somedudein@gmail.com', 'VolunTech');
+                            $mail->setFrom('voluntech@demomailtrap.com', 'VolunTech');
                             $mail->addAddress($email);
-        
+
                             // Content
                             $mail->isHTML(true);
                             $mail->Subject = 'Password Reset OTP';
                             $mail->Body    = "Your OTP for password reset is: <b>$otp</b>";
                             $mail->AltBody = "Your OTP for password reset is: $otp";
-        
+
                             $mail->send();
                             $success[] = 'OTP sent successfully!';
                             $currentStep = 'otp';
@@ -152,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <form action="reset-password.php" method="post" class="form">
                         <h1 class="form-h1">Enter OTP</h1>
                         <input type="text" name="otp" placeholder="Enter OTP" required>
-                        <input type="hidden" name="action" value="verify_otp">
+                        <input type="hidden" name="action" value="verify-otp">
                         <button type="submit">Verify OTP</button>
                     </form>
                 <?php elseif ($currentStep === 'reset'): ?>
