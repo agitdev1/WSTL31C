@@ -11,7 +11,7 @@
         <a href="../pages/home.php">Home</a>
         <a href="../pages/donate.php">Donate</a>
         <a href="../pages/volunteer.php">Volunteer</a>
-        <a href="../pages/profile.php">Profile</a>
+        <a href="../pages/dashboard.php">Account</a>
         <a href="../pages/index.php">Logout</a>
     </div>
 </nav>

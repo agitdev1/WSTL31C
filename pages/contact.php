@@ -18,21 +18,18 @@ include '../components/navbar.php';
         <h2>Get In Touch</h2>
         <form action="submit_contact.php" method="POST">
             <div class="form-group">
-                <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Your Email" required>
             </div>
             <div class="form-group">
-                <label for="message">Message</label>
                 <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             </div>
             <button type="submit" class="gradient-button">Submit</button>
         </form>
     </div>
 
-    <?php include '../components/footer.php'; ?>
+    <?php require_once '../components/footer.php'; ?>
 </body>
 </html>

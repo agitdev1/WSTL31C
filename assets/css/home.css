@@ -1,12 +1,13 @@
+/* Can be treated as css for the gallery items */
+
 .gallery {
     display: flex;
-    overflow-x: auto;
+    flex-wrap: wrap; /* Allow items to wrap */
     gap: 10px;
     margin: 20px 0;
     padding: 0 20px;
     box-sizing: border-box;
-    overflow: hidden;
-    flex-wrap: wrap;
+    overflow: hidden; /* Remove redundant overflow-x: auto */
 }
 
 .gallery-item {
@@ -16,13 +17,14 @@
     background-color: beige;
     width: 300px;
     text-align: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .gallery-item:hover {
     cursor: pointer;
-    background-color: rgb(215, 236, 250);
-    border-radius: 10px;
-
+    background-color: #e3f2fd; 
+    transform: translateY(-5px); 
 }
 
 .gallery-item img {
@@ -38,22 +40,16 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-
 .featured h1:hover {
-    color:rgb(35, 107, 155); 
+    color: rgb(35, 107, 155);
 }
 
 .featured {
-    text-decoration: none; 
-
+    text-decoration: none;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .gallery {
-        flex-wrap: wrap; /* Allow items to wrap */
-    }
-
     .gallery-item {
         width: 45%; /* Adjust width for smaller screens */
     }
@@ -66,6 +62,5 @@
 }
 
 .gallery-container {
-    overflow: hidden; 
+    overflow: hidden;
 }
-

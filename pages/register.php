@@ -12,35 +12,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $age = $_POST['age'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
-    $password = $_POST['password']; // Consider hashing the password before storing
+    $password = $_POST['password'];
     $city = $_POST['city'];
     $skills = $_POST['skills'];
     $cause = $_POST['cause'];
 
-    // Create a document to insert
-    $document = [
-        'first_name' => $firstName,
-        'last_name' => $lastName,
-        'age' => $age,
-        'gender' => $gender,
-        'email' => $email,
-        'password' => password_hash($password, PASSWORD_BCRYPT), // Hash the password
-        'city' => $city,
-        'skills' => $skills,
-        'cause' => $cause
-    ];
-
-    // Insert the document into the collection
-    $result = $collection->insertOne($document);
-
-    if ($result->getInsertedCount() === 1) {
-        echo "<script>alert('Registration successful!');
-            setTimeout(function() {
-                window.location.href = '../pages/login.php';
-        }, 1000);
-        </script>";
+    // Check if email already exists
+    $existingUser = $collection->findOne(['email' => $email]);
+    
+    if ($existingUser) {
+        // Email already exists
+        echo "<script>alert('This email is already registered. Please use a different email or login.');</script>";
     } else {
-        echo "<script>alert('Registration failed. Please try again.');</script>";
+        // Create a document to insert
+        $document = [
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'age' => $age,
+            'gender' => $gender,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_BCRYPT),
+            'city' => $city,
+            'skills' => $skills,
+            'cause' => $cause
+        ];
+
+        // Insert the document into the collection
+        $result = $collection->insertOne($document);
+
+        if ($result->getInsertedCount() === 1) {
+            echo "<script>alert('Registration successful!');
+                setTimeout(function() {
+                    window.location.href = '../pages/login.php';
+            }, 1000);
+            </script>";
+        } else {
+            echo "<script>alert('Registration failed. Please try again.');</script>";
+        }
     }
 }
 ?>
@@ -177,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     <script src="../assets/js/register.js"></script>
-    <?php include '../components/footer.php'; ?>
+    <?php require_once '../components/footer.php'; ?>
 </body>
 </html>
 
