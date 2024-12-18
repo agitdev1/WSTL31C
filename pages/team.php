@@ -19,7 +19,7 @@ include '../components/navbar.php';
     </div>
     <div class="team">
         <div class="member">
-            <div class="advisor_thumb"><img src="../assets/images/us/git.jpg" alt=""></div>
+            <div class="advisor_thumb"><img src="../assets/images/us/aga.jpg" alt=""></div>
             <div class="single_advisor_details_info">
                 <h6>Agather Medina</h6>
                 <p class="designation">Founder &amp; CEO</p>
