@@ -48,4 +48,15 @@
     background-color: #18BC9C;
     color: white;
 }
-
+.status-completed {
+    color: green;
+    font-weight: bold;
+}
+.status-ongoing {
+    color: orange;
+    font-weight: bold;
+}
+.status-cancelled {
+    color: red;
+    font-weight: bold;
+}
