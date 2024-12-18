@@ -19,8 +19,8 @@ if (!isset($_SESSION['user_id'])) {
 // Connect to MongoDB
 try {
     $uri = "mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech";
-    $client = new MongoDB\Client("mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech");
-    $collection = $client->yourDatabaseName->volunteers;
+    $mongoClient = new MongoDB\Client("mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech");
+    $collection = $mongoClient->yourDatabaseName->volunteers;
 } catch (Exception $e) {
     die("Failed to connect to database: " . $e->getMessage());
 }
@@ -47,19 +47,21 @@ function validateInput($data) {
     // Validate required fields
     $requiredFields = ['first_name', 'last_name', 'mobile_number', 'city', 'region'];
     foreach ($requiredFields as $field) {
-        if (empty($data[$field])) {
+        if (!isset($data[$field]) || trim($data[$field]) === '') {
             $errors[] = ucfirst(str_replace('_', ' ', $field)) . " is required";
         }
     }
 
     // Validate mobile number format
-    if (!empty($data['mobile_number']) && !preg_match('/^09\d{9}$/', $data['mobile_number'])) {
+    if (isset($data['mobile_number']) && !preg_match('/^09\d{9}$/', $data['mobile_number'])) {
         $errors[] = "Mobile number must be in 11-digit format starting with 09";
     }
 
-    // Validate date
-    if (!checkdate($data['month'], $data['day'], $data['year'])) {
-        $errors[] = "Invalid date selected";
+    // Validate date if all date fields are present
+    if (isset($data['month']) && isset($data['day']) && isset($data['year'])) {
+        if (!checkdate((int)$data['month'], (int)$data['day'], (int)$data['year'])) {
+            $errors[] = "Invalid date selected";
+        }
     }
 
     return $errors;
@@ -80,51 +82,62 @@ function sanitizeInput($data) {
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize input
-    $sanitizedData = sanitizeInput($_POST);
+    $sanitizedData = array_map('trim', $_POST);
     
     // Validate input
-    $validationErrors = validateInput($sanitizedData);
+    $validationErrors = [];
     
+    // Basic validation
+    if (empty($sanitizedData['first_name'])) $validationErrors[] = "First name is required";
+    if (empty($sanitizedData['last_name'])) $validationErrors[] = "Last name is required";
+    if (empty($sanitizedData['mobile_number'])) $validationErrors[] = "Mobile number is required";
+    if (!preg_match('/^09\d{9}$/', $sanitizedData['mobile_number'])) {
+        $validationErrors[] = "Mobile number must be in 11-digit format starting with 09";
+    }
+
     if (empty($validationErrors)) {
         try {
+            $collection = $mongoClient->yourDatabaseName->volunteers;
+            $userId = $_SESSION['user_id'];
+
             $updateData = [
                 'first_name' => $sanitizedData['first_name'],
                 'last_name' => $sanitizedData['last_name'],
-                'birthday' => [
-                    'month' => (int)$sanitizedData['month'],
-                    'day' => (int)$sanitizedData['day'],
-                    'year' => (int)$sanitizedData['year']
-                ],
-                'gender' => $sanitizedData['gender'],
-                'marital_status' => $sanitizedData['marital_status'],
+                'birthday' => $sanitizedData['birthday'],
+                'gender' => $sanitizedData['gender'] ?? '',
+                'marital_status' => $sanitizedData['marital_status'] ?? '',
                 'mobile_number' => $sanitizedData['mobile_number'],
                 'city' => $sanitizedData['city'],
                 'region' => $sanitizedData['region'],
-                'nationality' => $sanitizedData['nationality'],
-                'skills' => $sanitizedData['skills'] ?? [],
-                'cause' => $sanitizedData['cause'] ?? []
+                'nationality' => $sanitizedData['nationality'] ?? '',
+                'skills' => $sanitizedData['skills'],
+                'cause' => $sanitizedData['cause']
             ];
 
+            if ($updateData['birthday'] === null) {
+                unset($updateData['birthday']);
+            }
+
             $result = $collection->updateOne(
-                ['_id' => $userId],
+                ['_id' => new ObjectId($userId)],
                 ['$set' => $updateData]
             );
 
             if ($result->getModifiedCount() > 0) {
-                $success[] = "Profile updated successfully!";
-                // Refresh user data
-                $user = $collection->findOne(['_id' => $userId]);
+                $_SESSION['success'] = "Profile updated successfully";
+                header('Location: profile.php');
+                exit;
             } else {
-                $errors[] = "No changes were made to the profile.";
+                $_SESSION['error'] = "No changes were made";
             }
         } catch (Exception $e) {
-            $errors[] = "Error updating profile: " . $e->getMessage();
+            $_SESSION['error'] = "Error updating profile: " . $e->getMessage();
         }
     } else {
-        $errors = array_merge($errors, $validationErrors);
+        $_SESSION['error'] = implode('<br>', $validationErrors);
     }
 }
+
 
 // Add client-side validation
 $clientValidation = <<<JS
@@ -175,6 +188,7 @@ if (!empty($errors)): ?>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/profile2.css">
 </head>
 <body>
 <div class="container">
@@ -202,32 +216,7 @@ if (!empty($errors)): ?>
             <label for="birthday">Birthday</label>
                         <div class="row">
                             <div class="col-md-4">
-                                <?php
-                                $months = [
-                                  1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
-                                  5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
-                                  9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
-                                ];
-                                ?>
-                                <select class="form-control" id="month" name="month">
-                                  <?php foreach ($months as $value => $name): ?>
-                                    <option value="<?= $value ?>"><?= $name ?></option>
-                                  <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <select class="form-control" id="day" name="day">
-                                    <?php for ($i = 1; $i <= 31; $i++): ?>
-                                        <option value="<?= $i ?>"><?= $i ?></option>
-                                    <?php endfor; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-control" id="year" name="year">
-                                    <?php for ($i = 1940; $i <= 2024; $i++): ?>
-                                        <option value="<?= $i ?>"><?= $i ?></option>
-                                    <?php endfor; ?>
-                                </select>
+                                <input type="date" name="birthday" id="birthday" class="form-control">
                             </div>
                         </div>
                         <br>
@@ -306,57 +295,80 @@ if (!empty($errors)): ?>
                 <?php endforeach; ?>
             </select>
             </div>
-            <div class="form-group">
-                <label for="skills">Skills</label>
-                <div class="dropdown">
-                    <div class="selected-items" id="selectedItems">Select Skills</div>
-                    <div class="dropdown-content">
-                        <label><input type="checkbox" value="Communication Skills"> Communication Skills</label>
-                        <label><input type="checkbox" value="Negotiation and Conflict Resolution"> Negotiation and Conflict Resolution</label>
-                        <label><input type="checkbox" value="Networking"> Networking</label>
-                        <label><input type="checkbox" value="Project Management"> Project Management</label>
-                        <label><input type="checkbox" value="Policy Analysis"> Policy Analysis</label>
-                        <label><input type="checkbox" value="Advocacy"> Advocacy</label>
-                        <label><input type="checkbox" value="Data Literacy"> Data Literacy</label>
-                        <label><input type="checkbox" value="Cross-Cultural Competence"> Cross-Cultural Competence</label>
-                        <label><input type="checkbox" value="Strategic Thinking"> Strategic Thinking</label>
-                        <label><input type="checkbox" value="Financial Management"> Financial Management</label>
-                        <label><input type="checkbox" value="Technological Proficiency"> Technological Proficiency</label>
-                        <label><input type="checkbox" value="Leadership"> Leadership</label>
-                        <label><input type="checkbox" value="Monitoring and Evaluation"> Monitoring and Evaluation</label>
-                        <label><input type="checkbox" value="Adaptability and Resilience"> Adaptability and Resilience</label>
-                        <label><input type="checkbox" value="Ethical Decision-Making"> Ethical Decision-Making</label>
-                        <label><input type="checkbox" value="Public Speaking and Presentation"> Public Speaking and Presentation</label>
-                    </div>
-                </div>
-
+    <div class="container2">
+            <div>
+                <input type="text" autocomplete="off" id="skills" name="skills" placeholder="Skill areas you would be volunteering..." required readonly>
             </div>
-                <br>
-<div class="form-group">
-    <label for="cause">Causes</label>
-    <div class="dropdown">
-        <div class="selected-items" id="selectedCauses">Select Causes</div>
-        <div class="dropdown-content">
-            <label><input type="checkbox" value="No Poverty"> No Poverty</label>
-            <label><input type="checkbox" value="Zero Hunger"> Zero Hunger</label>
-            <label><input type="checkbox" value="Good Health and Well-Being"> Good Health and Well-Being</label>
-            <label><input type="checkbox" value="Quality Education"> Quality Education</label>
-            <label><input type="checkbox" value="Gender Equality"> Gender Equality</label>
-            <label><input type="checkbox" value="Clean Water and Sanitation"> Clean Water and Sanitation</label>
-            <label><input type="checkbox" value="Affordable and Clean Energy"> Affordable and Clean Energy</label>
-            <label><input type="checkbox" value="Decent Work and Economic Growth"> Decent Work and Economic Growth</label>
-            <label><input type="checkbox" value="Industry, Innovation, and Infrastructure"> Industry, Innovation, and Infrastructure</label>
-            <label><input type="checkbox" value="Reduced Inequality"> Reduced Inequality</label>
-            <label><input type="checkbox" value="Sustainable Cities and Communities"> Sustainable Cities and Communities</label>
-            <label><input type="checkbox" value="Responsible Consumption and Production"> Responsible Consumption and Production</label>
-            <label><input type="checkbox" value="Climate Action"> Climate Action</label>
-            <label><input type="checkbox" value="Life Below Water"> Life Below Water</label>
-            <label><input type="checkbox" value="Life on Land"> Life on Land</label>
-            <label><input type="checkbox" value="Peace, Justice, and Strong Institutions"> Peace, Justice, and Strong Institutions</label>
+            <div>
+                <input type="text" autocomplete="off" id="cause" name="cause" placeholder="Cause areas you're interested in..." required readonly>
+            </div>
+            <div id="skillModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Skills (Maximum of 5)</h2>
+            <table id="skillOptions">
+                <tr>
+                    <td><label><input type="checkbox" value="Communication Skills"> Communication Skills</label></td>
+                    <td><label><input type="checkbox" value="Negotiation and Conflict Resolution"> Negotiation and Conflict Resolution</label></td>
+                    <td><label><input type="checkbox" value="Networking"> Networking</label></td>
+                    <td><label><input type="checkbox" value="Project Management"> Project Management</label></td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" value="Policy Analysis"> Policy Analysis</label></td>
+                    <td><label><input type="checkbox" value="Advocacy"> Advocacy</label></td>
+                    <td><label><input type="checkbox" value="Data Literacy"> Data Literacy</label></td>
+                    <td><label><input type="checkbox" value="Cross-Cultural Competence"> Cross-Cultural Competence</label></td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" value="Strategic Thinking"> Strategic Thinking</label></td>
+                    <td><label><input type="checkbox" value="Financial Management"> Financial Management</label></td>
+                    <td><label><input type="checkbox" value="Technological Proficiency"> Technological Proficiency</label></td>
+                    <td><label><input type="checkbox" value="Leadership"> Leadership</label></td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" value="Monitoring and Evaluation"> Monitoring and Evaluation</label></td>
+                    <td><label><input type="checkbox" value="Adaptability and Resilience"> Adaptability and Resilience</label></td>
+                    <td><label><input type="checkbox" value="Ethical Decision-Making"> Ethical Decision-Making</label></td>
+                    <td><label><input type="checkbox" value="Public Speaking and Presentation"> Public Speaking and Presentation</label></td>
+                </tr>
+            </table>                
+            <button id="saveSkills" type="button">Save</button>
+        </div>
+    </div> 
+    <!-- CAUSE MODAL-->
+    <div id="causesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Choose Causes (Maximum of 5)</h2>
+            <table id="causeOptions">
+                <tr>
+                    <td><label><input type="checkbox" value="No Poverty"> No Poverty</label></td>
+                    <td><label><input type="checkbox" value="Zero Hunger"> Zero Hunger</label></td>
+                    <td><label><input type="checkbox" value="Good Health and Well-Being"> Good Health and Well-Being</label></td>
+                    <td><label><input type="checkbox" value="Quality Education"> Quality Education</label></td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" value="Gender Equality"> Gender Equality</label></td>
+                    <td><label><input type="checkbox" value="Clean Water and Sanitation"> Clean Water and Sanitation</label></td>
+                    <td><label><input type="checkbox" value="Affordable and Clean Energy"> Affordable and Clean Energy</label></td>
+                    <td><label><input type="checkbox" value="Decent Work and Economic Growth"> Decent Work and Economic Growth</label></td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" value="Industry, Innovation, and Infrastructure"> Industry, Innovation, and Infrastructure</label></td>
+                    <td><label><input type="checkbox" value="Reduced Inequality"> Reduced Inequality</label></td>
+                    <td><label><input type="checkbox" value="Sustainable Cities and Communities"> Sustainable Cities and Communities</label></td>
+                    <td><label><input type="checkbox" value="Responsible Consumption and Production"> Responsible Consumption and Production</label></td>
+                </tr>
+                <tr>
+                    <td><label><input type="checkbox" value="Climate Action"> Climate Action</label></td>
+                    <td><label><input type="checkbox" value="Life Below Water"> Life Below Water</label></td>
+                    <td><label><input type="checkbox" value="Life on Land"> Life on Land</label></td>
+                    <td><label><input type="checkbox" value="Peace, Justice, and Strong Institutions"> Peace, Justice, and Strong Institutions</label></td>
+                </tr>
+            </table>
+            <button id="saveCauses" type="button">Save</button>
         </div>
     </div>
-
-</div>
     </div>
     <button class="update" type="submit">Update</button>
                 </div>

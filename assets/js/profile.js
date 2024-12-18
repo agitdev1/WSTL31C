@@ -104,5 +104,33 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.style.display = "none";
     });
 });
+
+// Save selected skills when save button is clicked
+saveBtn.addEventListener("click", function() {
+    const selectedSkills = Array.from(skillOptions)
+        .filter(skill => skill.checked)
+        .map(skill => skill.value);
+
+    // Update the skills textbox with the selected skills
+    const skillsInput = document.getElementById("skills");
+    skillsInput.value = selectedSkills.join(", ");
+
+    // Close modal after saving
+    modal.style.display = "none";
+});
+
+// Save selected causes when save button is clicked
+saveBtn.addEventListener("click", function() {
+    const selectedCauses = Array.from(causeOptions)
+        .filter(cause => cause.checked)
+        .map(cause => cause.value);
+
+    // Update the causes textbox with the selected causes
+    const causesInput = document.getElementById("cause");
+    causesInput.value = selectedCauses.join(", ");
+
+    // Close modal after saving
+    modal.style.display = "none";
+});
 // Call the function when the page loads
 window.onload = clearCheckboxes;
