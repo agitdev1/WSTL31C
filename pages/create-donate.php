@@ -18,28 +18,28 @@ include '../components/navbar3.php';
         <br>
         <form action="create-donate.php" method="post" class="form" enctype="multipart/form-data">
     <div> 
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required placeholder="Title">
-    </div>
-    <div>
-        <label for="skills">Skills needed:</label>
-        <input type="text" autocomplete="off" id="cause" name="cause" placeholder="Cause Area" required readonly>
-    </div>
-    <div>
-        <label for="date">Start Date:</label>
-        <input type="date" id="date" name="date" required>
-    </div>
-    <div>
-        <label for="date">End Date:</label>
-        <input type="date" id="date" name="date" required>
-    </div>
-    <div>
-        <label for="image">Upload Banner:</label>
-        <input type="file" id="image" name="image" accept="image/*" required>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required placeholder="Enter project title">
     </div>
     <div>
         <label for="organizer"> Organizer</label>
         <input type="text" id="organizer" name="organizer" required placeholder="Organizer Name">
+    </div>
+    <div>
+        <label for="skills">Cause Area</label>
+        <input type="text" autocomplete="off" id="cause" name="cause" placeholder="Select cause area" required readonly>
+    </div>
+    <div>
+        <label for="date">Start Date</label>
+        <input type="date" id="date" name="date" required>
+    </div>
+    <div>
+        <label for="date">End Date</label>
+        <input type="date" id="date" name="date" required>
+    </div>
+    <div>
+        <label for="image">Upload Banner</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
     </div>
     <br>
     <button type="submit">Submit</button>

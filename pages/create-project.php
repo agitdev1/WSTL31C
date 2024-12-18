@@ -18,42 +18,42 @@ include '../components/navbar3.php';
         <br>
         <form action="create-project.php" method="post" class="form" enctype="multipart/form-data">
     <div> 
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required placeholder="Title">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required placeholder="Enter project title">
     </div>
-    <div> 
-        <label for="location">Location</label>
-        <input type="text" id="lcoation" name="location" required placeholder="Title">
-    </div>
-    <div>
-        <label for="skills">Skills needed:</label>
-        <input type="text" autocomplete="off" id="skills" name="skills" placeholder="Skills needed" required readonly>
-    </div>
-    <div>
-        <label for="cause">Cause Area:</label>
-        <input type="text" autocomplete="off" id="cause" name="cause" placeholder="Cause Area" required readonly>
-    </div>
-    <div>
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
-    </div>
-    <div>
-        <label for="time">Start Time:</label>
-        <input type="time" id="time" name="start-time" required>
-    </div>
-    <div>
-        <label for="time">End Time:</label>
-        <input type="time" id="time" name="end-time" required>
-    </div>
-    <div>
-        <label for="hours">Amount of Hours:</label>
-        <input type="number" id="hours" name="hours" min="1" required placeholder="Hours">
-    </div>
-    <br>
     <div>
         <label for="organizer">Organizer</label>
         <input type="text" id="organizer" name="organizer" required placeholder="Organizer Name">
     </div>
+    <div> 
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" required placeholder="Location">
+    </div>
+    <div>
+        <label for="skills">Skills needed</label>
+        <input type="text" autocomplete="off" id="skills" name="skills" placeholder="Select skills needed" required readonly>
+    </div>
+    <div>
+        <label for="cause">Cause Area</label>
+        <input type="text" autocomplete="off" id="cause" name="cause" placeholder="Select cause Area" required readonly>
+    </div>
+    <div>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+    </div>
+    <div>
+        <label for="time">Start Time</label>
+        <input type="time" id="time" name="start-time" required>
+    </div>
+    <div>
+        <label for="time">End Time</label>
+        <input type="time" id="time" name="end-time" required>
+    </div>
+    <div>
+        <label for="hours">Amount of Hours</label>
+        <input type="number" id="hours" name="hours" min="1" required placeholder="Hours">
+    </div>
+    <br>
     <div>
         <label for="image">Upload Banner:</label>
         <input type="file" id="image" name="image" accept="image/*" required>
