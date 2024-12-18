@@ -6,7 +6,7 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+    background: linear-gradient(45deg, #2ECC71, #27AE60);
     color: #201f1f;
     font-size: 1em;
     cursor: pointer;
@@ -15,7 +15,7 @@
 
 .donate-button:hover {
     transform: scale(1.05);
-    background: #53E965;
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
 }
 
 .modal {

@@ -184,20 +184,23 @@ if (!empty($errors)): ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/profile2.css">
 </head>
 <body>
+<?php include '../components/navbar2.php'; ?>
+
 <div class="container">
     <div class="sidebar">
-            <ul class="menu">
-                <li class="menu-item "><a href="../pages/dashboard.php">User Dashboard</a></li>
-                <li class="menu-item"><a href="../pages/history.php">My History</a></li>                
+    <ul class="menu">
+                <li class="menu-item"><a href="../pages/dashboard.php">User Dashboard</a></li>
                 <li class="menu-item active"><a href="../pages/profile.php">Profile</a></li>
-                <li class="menu-item "><a href="../pages/account.php">Account</a></li>                <li class="menu-item"><hr></li>
+                <li class="menu-item"><a href="../pages/history.php">My History</a></li>                
+                <li class="menu-item"><hr></li>
                 <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
             </ul>
         </div>
@@ -223,28 +226,24 @@ if (!empty($errors)): ?>
             <div class="form-group">
                 <label>Gender</label>
                 <div>
-                    <label class="radio-inline">
-                        <input name="gender" type="radio" value="male"> Male
-                    </label>
-                    <label class="radio-inline">
-                        <input name="gender" type="radio" value="female"> Female
-                    </label>
-                    <label class="radio-inline">
-                        <input name="gender" type="radio" value="other"> Other
-                    </label>
-                    <label class="radio-inline">
-                        <input name="gender" type="radio" value="no_ans"> Prefer not to answer
-                    </label>
+                    <h1 class="profile-name">Juan Dela Cruz</h1>
+                    <p class="profile-role">VolunTech Member since 2023</p>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="maritalStatus">Marital Status</label>
-                <select class="form-control" id="marital_status" name="marital_status">
-                    <option value="single">Single</option>
-                    <option value="married">Married</option>
-                    <option value="separated">Separated</option>
-                    <option value="widowed">Widowed</option>
-                </select>
+
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <div class="stat-number">₱ 2250</div>
+                    <div class="stat-label">Total Donations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Volunteer Hours</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Events Attended</div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="mobile_number">Mobile Number</label>
@@ -376,7 +375,8 @@ if (!empty($errors)): ?>
 
         </div>
     </div>
-    <?php require_once '../components/footer2.php'; ?>
-    <script src="../assets/js/profile.js"></script>
+</div>
+
+<?php require_once '../components/footer2.php'; ?>
 </body>
-</html>     
+</html>

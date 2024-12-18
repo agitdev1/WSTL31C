@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar.php';
+include '../components/navbar3.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +24,6 @@ include '../components/navbar.php';
     </div>
 </div>
 
-<?php require_once '../components/footer.php'; ?>
+<?php require_once '../components/footer3.php'; ?>
 </body>
 </html>

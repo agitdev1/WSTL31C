@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar2.php';
+include '../components/navbar3.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,56 +7,55 @@ include '../components/navbar2.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 <body>
     <div class="container">
-    <div class="sidebar">
+        <div class="sidebar">
             <ul class="menu">
-                <li class="menu-item active"><a href="../pages/dashboard.php">User Dashboard</a></li>
-                <li class="menu-item "><a href="../pages/profile.php">Profile</a></li>
-                <li class="menu-item"><a href="../pages/history.php">My History</a></li>                
+                <li class="menu-item active"><a href="../pages/dashboard2.php">Organizaton Dashboard</a></li>
+                <li class="menu-item"><a href="../pages/profile2.php">Profile</a></li>
+                <li class="menu-item"><a href="../pages/history2.php">Organization History</a></li>                
                 <li class="menu-item"><hr></li>
                 <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
             </ul>
         </div>
         <div class="content">
-            <h1 class="greeting">Hi, Juan!</h1>
+            <h1 class="greeting">Welcome Back, XYZ Foundation</h1>
             <hr class="divider">
             <h2 class="dashboard-title">Dashboard</h2>
             <div class="cards">
                 <div class="card">
-                    <h3 class="card-value">9</h3>
+                    <h3 class="card-value">6</h3>
                     <p class="card-description">
-                        Total Volunteer of Hours
+                        Created Volunteering Events This Month
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="card-value">₱ 2250</h3>
+                    <h3 class="card-value">4</h3>
                     <p class="card-description">
-                    Total Donations (PHP)
+                    Total Donation Events Created Ths Month
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="card-value">3</h3>
+                    <h3 class="card-value">₱ 35000</h3>
                     <p class="card-description">
-                        Total Events Joined
+                    Total Funds Raised (PHP)
                     </p>
                 </div>
                 <div class="card">
-                    <h3 class="card-value">₱ 750</h3>
+                    <h3 class="card-value">6</h3>
                     <p class="card-description">
-                       Average Contributions (PH
+                       Ongoing Projects
                     </p>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php require_once '../components/footer2.php'; ?>
+    <?php require_once '../components/footer3.php'; ?>
 </body>
 </html>
-
-<!-- should be able to fetch in the database the total number of volunteer hours, total donations, total events joined, and average contributions -->

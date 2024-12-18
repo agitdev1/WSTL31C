@@ -1,5 +1,5 @@
 .greeting {
-    color: #cd1d1d;
+    color: #DD4040;
 }
 
 .divider {
@@ -14,7 +14,7 @@
 
 .cards {
     display: flex;
-    flex-wrap: wrap; /* Allows the cards to wrap to the next line */
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -24,8 +24,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    flex: 0 0 calc(50% - 20px); 
-    box-sizing: border-box; 
+    flex: 0 0 calc(50% - 20px);
+    box-sizing: border-box;
 }
 
 .card-value {
@@ -45,4 +45,52 @@
     height: 24px;
     vertical-align: middle;
     margin-right: 5px;
-} 
+}
+
+/* Additional styles for recent activity */
+.recent-activity {
+    margin-top: 30px;
+}
+
+.activity-list {
+    list-style: none;
+    padding: 0;
+}
+
+.activity-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-date {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Fix for footer white space */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+}

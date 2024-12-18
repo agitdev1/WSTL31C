@@ -2,12 +2,11 @@
 
 .gallery {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
-    gap: 10px;
+    flex-wrap: wrap; 
     margin: 20px 0;
     padding: 0 20px;
     box-sizing: border-box;
-    overflow: hidden; /* Remove redundant overflow-x: auto */
+    overflow: hidden; 
 }
 
 .gallery-item {
@@ -18,7 +17,7 @@
     width: 300px;
     text-align: center;
     font-size: 14px;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    transition: background-color 0.3s ease; 
 }
 
 .gallery-item:hover {

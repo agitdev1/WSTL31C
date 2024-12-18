@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar2.php';
+include '../components/navbar3.php';
 session_start();
 
 // Configuration
@@ -7,6 +7,7 @@ $config = [
     'pdfPath' => '../assets/documents/sample.pdf',  // Update with your PDF path
     'fileName' => 'document.pdf'
 ];
+
 // Generate CSRF token if not exists
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -27,6 +28,7 @@ if (empty($_SESSION['csrf_token'])) {
 <h1>Documentation</h1>
 <div class="pdf-container">
         <div class="pdf-header">
+            <h2>Document Viewer</h2>
             <button class="control-button" id="openTabBtn">
                 <i class="fas fa-external-link-alt"></i> Open in New Tab
             </button>
@@ -36,7 +38,7 @@ if (empty($_SESSION['csrf_token'])) {
         </div>
     </div>
 </div>
-<?php require_once '../components/footer2.php'; ?>
+<?php require_once '../components/footer3.php'; ?>
 <script src="../assets/js/documentation.js"></script>
 </body>
 </html>

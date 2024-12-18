@@ -10,7 +10,7 @@ include '../components/navbar2.php';
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/css/modal-donate.css"> <!-- Move modal styles to a separate CSS file -->
+    <link rel="stylesheet" href="../assets/css/modal-donate.css"> 
 </head>
 <body>
 <div class="main-content">
@@ -30,8 +30,8 @@ include '../components/navbar2.php';
             ],
             [
                 'image' => '../assets/images/donation/story.png',
-                'alt' => 'Storybooks for The Storytelling Project',
-                'desc' => 'Storybooks for The Storytelling Project',
+                'alt' => 'Storybooks for The Storytelling Project for XYZ Foundation',
+                'desc' => 'Storybooks for The Storytelling Project for XYZ Foundation',
                 'location' => '123 Tayuman, Manila City',
                 'start_date' => 'Jan 10, 2025',
                 'end_date' => 'Jan 12, 2025',
@@ -40,7 +40,7 @@ include '../components/navbar2.php';
             ],
             [
                 'image' => '../assets/images/donation/undies.jpg',
-                'alt' => 'Funds for Underwear Donation for Typhoon Survivors',
+                'alt' => 'Funds for Underwear Donation for Typhoon Survivors ',
                 'desc' => 'Funds for Underwear Donation for Typhoon Survivors',
                 'location' => 'Sta. Mesa Heights, Quezon City',
                 'start_date' => 'Feb 20, 2025',
@@ -60,8 +60,8 @@ include '../components/navbar2.php';
             ],
             [
                 'image' => '../assets/images/donation/fund.jpg',
-                'alt' => 'Fundraising for Typhoon Survivors',
-                'desc' => 'Fundraising for Typhoon Survivors',
+                'alt' => 'Fundraising for Typhoon Survivors in ABC Area',
+                'desc' => 'Fundraising for Typhoon Survivors in ABC Area',
                 'location' => '321 Green Park, Nature City, 98765',
                 'start_date' => 'Apr 22, 2025',
                 'end_date' => 'Apr 24, 2025',
@@ -82,7 +82,7 @@ include '../components/navbar2.php';
 
         foreach ($events as $event) {
             echo '<div class="gallery-item">';
-            echo '<a target="_blank" href="https://via.placeholder.com/300x200">';
+            echo '<a target="_blank" href="../pages/oops.php" rel="noopener noreferrer">';
             echo '<img src="' . htmlspecialchars($event['image']) . '" alt="' . htmlspecialchars($event['alt']) . '">';
             echo '</a>';
             echo '<div class="desc">' . htmlspecialchars($event['desc']) . '</div>';

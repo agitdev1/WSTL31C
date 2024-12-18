@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar2.php';
+include '../components/navbar3.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,62 +15,62 @@ include '../components/navbar2.php';
 
     <?php
     $sections = [
-        "Upcoming Events" => [
-            "link" => "events.php",
+        "Your Upcoming Events" => [
+            "link" => "oops2.php",
             "items" => [
                 [
                     "image" => "../assets/images/event1.jpg",
-                    "link" => "../pages/events.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Event Volunteers Needed for Feline Frolic Event"
                 ],
                 [
                     "image" => "../assets/images/event2.jpg",
-                    "link" => "../pages/events.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Luntiang Marikina: Marikina River Clean Up Activity for November 2024"
                 ],
                 [
                     "image" => "../assets/images/event3.png",
-                    "link" => "../pages/events.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Sacks of Rice for Karinderia ni Mang Urot"
                 ],
             ]
         ],
-        "Featured Volunteer Events" => [
-            "link" => "volunteer.php",
+        "Your Ongoing Volunteering Projects" => [
+            "link" => "oops2.php",
             "items" => [
                 [
                     "image" => "../assets/images/event4.jpeg",
-                    "link" => "../pages/volunteer.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Teaching Financial Literacy to Kids"
                 ],
                 [
                     "image" => "../assets/images/event5.jpeg",
-                    "link" => "../pages/volunteer.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Brighten a Foster Child's Day"
                 ],
                 [
                     "image" => "../assets/images/event6.jpeg",
-                    "link" => "../pages/oops.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Feeding Program"
                 ],
             ]
         ],
-        "Featured Donation Events" => [
-            "link" => "donate.php",
+        "Your Ongoing Donation Events" => [
+            "link" => "oops2.php",
             "items" => [
                 [
                     "image" => "../assets/images/donate1.jpeg",
-                    "link" => "../pages/donate.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Operation Tulong Lycean: Donation for Bagyon Kristine Victims"
                 ],
                 [
                     "image" => "../assets/images/donate2.jpg",
-                    "link" => "../pages/donate.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Dugong Lycean Para sa Bayan: A Blood Donation Drive"
                 ],
                 [
                     "image" => "../assets/images/donate3.jpg",
-                    "link" => "../pages/donate.php",
+                    "link" => "../pages/oops2.php",
                     "description" => "Underwear Donation for Typhoon Survivors"
                 ],
             ]
@@ -92,6 +92,6 @@ include '../components/navbar2.php';
     }
     ?>
 </div>
-<?php require_once '../components/footer2.php'; ?>
+<?php require_once '../components/footer3.php'; ?>
 </body>
 </html>
