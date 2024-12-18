@@ -197,6 +197,7 @@ box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 } 
 
 .modal-content {
+    position: relative; /* Ensure the modal content is positioned relatively */
     background-color: #fff;
     padding: 25px;
     border-radius: 8px;
@@ -212,10 +213,12 @@ box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .close {
+    position: absolute; /* Position the close button absolutely */
+    top: 10px; /* Position it 10px from the top */
+    right: 10px; /* Position it 10px from the right */
     color: #aaa;
     font-size: 24px;
     font-weight: bold;
-    align-self: flex-end;
     cursor: pointer;
     transition: color 0.3s ease;
 }
