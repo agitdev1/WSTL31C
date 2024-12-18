@@ -33,7 +33,7 @@ include '../components/navbar.php';
         </div>
     </div>
     <div class="buttons">
-        <a href="../pages/register.php" class="gradient-button">Register</a>
+        <a href="../pages/register-select.php" class="gradient-button">Register</a>
         <a href="../pages/login.php" class="gradient-button">Login</a>
     </div>
     <br>
