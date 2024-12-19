@@ -5,7 +5,7 @@ include '../components/navbar.php';
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../assets/css/styles.css">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <Title>Welcome to Voluntech</Title>
 </head>
 <body>

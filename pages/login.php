@@ -1,28 +1,47 @@
 <?php
+// Start session at the very beginning
+session_start();
+
 require '../vendor/autoload.php'; // Include Composer's autoloader
 include '../components/navbar.php';
 
-$client = new MongoDB\Client("mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech"); // Connect to MongoDB
-$collection = $client->yourDatabaseName->volunteers; // Select the database and collection
+// Connect to MongoDB
+$client = new MongoDB\Client("mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech");
 
+// Make sure you use the correct database name
+$volunteersCollection = $client->yourDatabaseName->volunteers; 
+$organizationsCollection = $client->yourDatabaseName->organizations;
+
+// Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    // Get form inputs and sanitize them
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
-    // Find the user by email
-    $user = $collection->findOne(['email' => $email]);
-
-    if ($user && password_verify($password, $user['password'])) {
-        // Password is correct, start a session and redirect to a protected page
-        session_start();
-        $_SESSION['user_id'] = (string)$user['_id'];
-        header('Location: ../pages/home.php');
-        exit;
-    } else {
-        // Invalid email or password
-        echo "<script>alert('Invalid email or password. Please try again.');</script>";
+    // Check the volunteers collection
+    $volunteer = $volunteersCollection->findOne(['email' => $email]);
+    if ($volunteer && password_verify($password, $volunteer['password'])) {
+        // Volunteer login successful
+        $_SESSION['user_id'] = (string) $volunteer['_id'];
+        $_SESSION['user_type'] = 'volunteer';
+        $_SESSION['email'] = $email;
+        header('Location: ../pages/home.php'); 
+        exit; // Always call exit() after header()
     }
+
+    // Check the organizations collection
+    $organization = $organizationsCollection->findOne(['email' => $email]);
+    if ($organization && password_verify($password, $organization['password'])) {
+        // Organization login successful
+        $_SESSION['user_id'] = (string) $organization['_id'];
+        $_SESSION['user_type'] = 'organization';
+        $_SESSION['email'] = $email;
+        header('Location: ../pages/org.php'); 
+        exit; // Always call exit() after header()
+    }
+
+    // If both queries fail, show an error
+    echo "<script>alert('Invalid email or password. Please try again.');</script>";
 }
 ?>
 <!DOCTYPE html>
