@@ -104,7 +104,7 @@ body {
 }
 
 .event-details a {
-    color: #007bff;
+    color: #5da0f1;
     text-decoration: none;
 }
 
@@ -113,12 +113,12 @@ body {
 }
 
 .status-completed {
-    color: green;
+    color: 007bff;
     font-weight: bold;
 }
 
 .status-ongoing {
-    color: orange;
+    color: #47ec4a;
     font-weight: bold;
 }
 

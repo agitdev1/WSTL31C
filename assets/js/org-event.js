@@ -1,6 +1,10 @@
+function editProjectStatus() {
+    // Logic to edit project details
+    alert("Edit Project Details clicked!");
+}
 function editProjectDetails() {
     // Logic to edit project details
-    windows.alert("Edit Project Details clicked!");
+    alert("Edit Project Details clicked!");
 }
 function completeEvent() {
     const statusElement = document.getElementById('event-status');

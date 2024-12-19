@@ -21,12 +21,23 @@ require_once '../components/navbar3.php';
     </div>
 </div>
 <div class="event-details">
+    <h3>Event Status</h3>
+    <button class="edit-button" onclick="editProjectStatus()">Edit Event Status</button>
+    <button class="complete-button" onclick="completeEvent()">Mark as Completed</button>
+    <button class="cancel-button" onclick="cancelEvent()">Cancel Event</button>
+    <p><strong> Cause Area:</strong> Life on Land</p>
+    <p><strong>Volunteers Needed:</strong> 5</p>
+    <p><strong> Volunteers Registered:</strong> 3</p>
+    <p><strong> Days Left:</strong> 1</p>
+    <p><strong> Status: </strong> <span id="event-status" class="status-ongoing">Ongoing</span></p>
+</div>
+<div class="event-details">
     <h3>Project Details</h3>
     <button class="edit-button" onclick="editProjectDetails()">Edit Project Details</button>
     <ul>
         <li>
             <i class="fa fa-location-arrow" aria-hidden="true"></i>
-            <small>Roman Garden Marikina River Parks Barangay Jesus Dela Peña Marikina City</small>
+            <small>Comuna, Makati City </small>
         </li>
         <li>
             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -41,10 +52,6 @@ require_once '../components/navbar3.php';
             <small><a href="/organization/232">Animal Protectors</a></small>
         </li>
         <li>
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <small>John Batumbakal</small>
-        </li>
-        <li>
             <i class="fa fa-phone" aria-hidden="true"></i>
             <small>09123456789</small>
         </li>
@@ -54,17 +61,7 @@ require_once '../components/navbar3.php';
         </li>
     </ul>
 </div>
-<div class="event-details">
-    <h3>Event Status</h3>
-    <button class="complete-button" onclick="completeEvent()">Mark as Done</button>
-    <button class="cancel-button" onclick="cancelEvent()">Cancel Event</button>
-    <p>Goal: 5</p>
-    <p>Volunteers Needed: 5</p>
-    <p>Days Left: 1</p>
-    <p>Status: <span id="event-status" class="status-ongoing">Ongoing</span></p>
-</div>
         <div class="content">
-            <h2> About Event</h2>
             <h3>About Feline Frolic</h3>
             <p>Feline Frolic is more than just an event; it’s a gathering of a passionate community committed to helping stray cats find loving homes. This event brings together rescuers, animal lovers, advocates, and compassionate businesses to share knowledge, raise awareness, and promote the welfare of our furry friends. At Feline Frolic, you’ll find adoption booths, insightful talks, local pet-friendly brands, and opportunities to connect with like-minded individuals.</p>
 
@@ -90,6 +87,14 @@ require_once '../components/navbar3.php';
                     <li>Answering attendee inquiries: Welcoming attendees, answering questions, and sharing event details.</li>
                 </ul>
             </div>
+            <h3>Why Volunteer with us?</h3>
+            <div class="volunteer-role">
+               <ul>
+                    <li>Gain hands-on experience with event management and animal advocacy.</li>
+                    <li>Meet animal advocates, rescuers, and fellow volunteers who share your passion..</li>
+                    <li>Contribute to a meaningful cause, helping cats find loving, forever homes.</li>
+                    <li>Be part of a vibrant community and connect with brands and organizations making a difference.</li>
+                </ul>
 </div>
         </div>
     </div>
