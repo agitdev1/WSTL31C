@@ -41,7 +41,6 @@ body {
 
 .content p {
     line-height: 1.6;
-    margin-bottom: 10px; 
     color: #555;
 }
 
@@ -72,7 +71,7 @@ body {
 }
 
 .event-details {
-    padding: 15px; 
+    padding: 5px; 
 }
 
 .event-details h1 {

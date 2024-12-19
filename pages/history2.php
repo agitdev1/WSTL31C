@@ -16,7 +16,7 @@
         <ul class="menu">
             <li class="menu-item"><a href="../pages/dashboard2.php">Organization Dashboard</a></li>
             <li class="menu-item"><a href="../pages/profile2.php">Profile</a></li>
-            <li class="menu-item active"><a href="../pages/history2.php">Organization History</a></li>                
+            <li class="menu-item active"><a href="../pages/history2.php"> History</a></li>                
             <li class="menu-item"><hr></li>
             <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
         </ul>
