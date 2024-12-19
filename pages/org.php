@@ -20,7 +20,7 @@ include '../components/navbar3.php';
             "items" => [
                 [
                     "image" => "../assets/images/event1.jpg",
-                    "link" => "../pages/oops2.php",
+                    "link" => "../pages/org-event.php",
                     "description" => "Event Volunteers Needed for Feline Frolic Event"
                 ],
                 [
