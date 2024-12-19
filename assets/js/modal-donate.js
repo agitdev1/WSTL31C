@@ -7,7 +7,6 @@ document.querySelectorAll('.donate-button').forEach(button => {
         modalForm.location.value = form.location.value;
         modalForm.start_date.value = form.start_date.value;
         modalForm.end_date.value = form.end_date.value;
-        modalForm.time.value = form.time.value;
         modalForm.organization.value = form.organization.value;
         openModal();
     });
