@@ -53,8 +53,12 @@ require_once '../components/navbar2.php';
         <h3>About The Project</h3>
         <p>Description of the Event</p>
     </div>
-    <button type="submit" class="donate-button">DONATE</button>
-    <div id="donationModal" class="modal">
+    <div class="button-container">
+        <button type="submit" class="donate-button">DONATE</button>
+        </div>
+        
+ <!-- Modal -->
+ <div id="donationModal" class="modal">
     <div class="modal-content">
         <span id="closeModalButton" class="close">&times;</span>
         <h2>Enter Amount in Peso</h2>
@@ -69,14 +73,13 @@ require_once '../components/navbar2.php';
             <button type="submit">Submit</button>
 
         </form>
-    </div>  
+    </div>
 </div>
     </div>
     </div>
     </div>
     <?php require_once '../components/footer2.php'; ?>
     <script src="../assets/js/org-event.js?v=<?php echo time(); ?>"></script>
-    <script src="../assets/js/modal-donate.js"></script>
     </body>
 </html>
 

@@ -9,29 +9,28 @@ require_once '../components/navbar2.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Event Details</title>
         <link rel="stylesheet" href="../assets/css/styles.css?v=<?php echo time(); ?>">
-        <link rel="stylesheet" href="../assets/css/vol-event.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../assets/css/vol-donate.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="../assets/css/modal-volunteer.css">
-        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
     <body>
     <div class="container">
     <div class="header">
-    <div class="image-container">
-    <img src="https://via.placeholder.com/1080x1350" alt="Feline Frolic Poster">    </div>
-</div>
-<div class="event-details">
-    <h1> Event Title</h1>
-    <h3>Event Status</h3>
-    <p><strong> Cause Area:</strong> </p>
-    <p><strong> Skills Needed:</strong>  </p>
-    <p><strong>Volunteers Needed:</strong> </p>
-    <p><strong> Volunteers Registered:</strong> </p>
-    <p><strong> Days Left:</strong> </p>
-    <p><strong> Status: </strong> <span id="event-status" class="status-ongoing">Ongoing</span></p>
-</div>
-<div class="event-details">
+        <div class="image-container">
+            <img src="https://via.placeholder.com/1080x1350" alt="Feline Frolic Poster">  
+        </div>
+        <div class="event-details">
+            <h1>Event Title</h1>
+            <h3>Event Status</h3>
+            <p><strong>Cause Area:</strong></p>
+            <p> <strong>Skills Needed:</strong></p>
+            <p><strong>Volunteers Needed:</strong> <span>N</span></p>
+            <p><strong>Volunteers Registered:</strong> <span>N</span></p>
+            <p><strong>Days Left:</strong>N</p>            
+            <p><strong> Status: </strong> <span id="event-status" class="status-ongoing">Ongoing</span></p>
+            <!-- Event Details section -->
+            <div class="event-details-container">
     <h3>Event Details</h3>
     <ul>
         <li>
@@ -48,7 +47,7 @@ require_once '../components/navbar2.php';
         </li>
         <li>
             <i class="fa fa-users" aria-hidden="true"></i>
-            <small><a href="../pages/oops3.php">Organizer Name</a></small>
+            <small><a href="../pages/oops3.php ">Organizer Name</a></small>
         </li>
         <li>
             <i class="fa fa-phone" aria-hidden="true"></i>
@@ -60,10 +59,10 @@ require_once '../components/navbar2.php';
         </li>
     </ul>
 </div>
-        <div class="content">
-            <h3>About Event</h3>
-            <p>Description about the event</p>
-        </div>
+    <div class="content">
+        <h3>About The Project</h3>
+        <p>Description of the Event</p>
+    </div>
         <div class="button-container">
         <button type="button" class="volunteer-button">Volunteer</button>
          <button type="button" class="unjoin-button" data-bs-toggle="modal" data-bs-target="#unjoinModal" style="display:none;">Unjoin</button>
@@ -93,6 +92,8 @@ require_once '../components/navbar2.php';
             <button class="confirm-unjoin-button">Confirm</button>
         </div>
     </div>
+</div>
+</div>
 </div>
     <?php require_once '../components/footer2.php'; ?>
     <script src="../assets/js/org-event.js?v=<?php echo time(); ?>"></script>
