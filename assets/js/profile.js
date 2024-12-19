@@ -1,69 +1,136 @@
-// Skills Dropdown
-const selectedSkills = document.getElementById('selectedItems');
-const skillsDropdownContent = document.querySelector('.dropdown-content');
-const skillsCheckboxes = skillsDropdownContent.querySelectorAll('input[type="checkbox"]');
+document.addEventListener("DOMContentLoaded", function() {
+    const maxAllowed = 5;
 
-selectedSkills.addEventListener('click', () => {
-    skillsDropdownContent.style.display = skillsDropdownContent.style.display === 'block' ? 'none' : 'block';
-});
+    // Limit for skills checkboxes
+    const skillsCheckboxes = document.querySelectorAll('#skillModal input[type="checkbox"]');
+    skillsCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            let checkedCount = Array.from(skillsCheckboxes).filter(item => item.checked).length;
+            if (checkedCount > maxAllowed) {
+                this.checked = false;
+                alert('You can select up to ' + maxAllowed + ' skills.');
+            }
+        });
+    });
 
-skillsCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-        const selectedCheckboxes = Array.from(skillsCheckboxes).filter(i => i.checked);
+    // Limit for causes checkboxes
+    const causesCheckboxes = document.querySelectorAll('#causesModal input[type="checkbox"]');
+    causesCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            let checkedCount = Array.from(causesCheckboxes).filter(item => item.checked).length;
+            if (checkedCount > maxAllowed) {
+                this.checked = false;
+                alert('You can select up to ' + maxAllowed + ' causes.');
+            }
+        });
+    });
 
-        if (selectedCheckboxes.length > 4) {
-            checkbox.checked = false;
-            alert('You can only select up to 4 skills.');
-            return;
+    const modal = document.getElementById("skillModal");
+    const skillsInput = document.getElementById("skills");
+    const closeBtn = document.querySelector(".close");
+    const saveBtn = document.getElementById("saveSkills");
+    const skillOptions = document.querySelectorAll("#skillOptions input[type='checkbox']");
+
+    // Open modal when skills input is clicked
+    skillsInput.addEventListener("click", function() {
+        modal.style.display = "flex";
+        modal.style.justifyContent = "center";
+        modal.style.alignItems = "center";
+    });
+
+    // Close modal when close button is clicked
+    closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    // Close modal when clicked outside the modal content
+    window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
+    });
 
-        const selected = selectedCheckboxes.map(i => i.value).join(', ');
-        selectedSkills.textContent = selected || 'Select Skills';
+    // Save selected skills when save button is clicked
+    saveBtn.addEventListener("click", function() {
+        const selectedSkills = Array.from(skillOptions)
+            .filter(skill => skill.checked)
+            .map(skill => skill.value);
+
+        // Update the skills input with selected skills
+        skillsInput.value = selectedSkills.join(", ");
+
+        // Close modal after saving
+        modal.style.display = "none";
     });
 });
+// CAUSES MODAL
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("causesModal");
+    const closeBtn = document.querySelector("#causesModal .close");
+    const saveBtn = document.getElementById("saveCauses");
+    const causeOptions = document.querySelectorAll("#causeOptions input[type='checkbox']");
 
-// Causes Dropdown
-const selectedCauses = document.getElementById('selectedCauses');
-const causesDropdownContent = selectedCauses.nextElementSibling;
-const causesCheckboxes = causesDropdownContent.querySelectorAll('input[type="checkbox"]');
+    // Open modal when button is clicked
+    const openCausesModalButton = document.getElementById("cause");
+    openCausesModalButton.addEventListener("click", function() {
+        modal.style.display = "flex";
+        modal.style.justifyContent = "center";
+        modal.style.alignItems = "center";
+    });
 
-selectedCauses.addEventListener('click', () => {
-    causesDropdownContent.style.display = causesDropdownContent.style.display === 'block' ? 'none' : 'block';
-});
+    // Close modal when close button is clicked
+    closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
 
-causesCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-        const selectedCheckboxes = Array.from(causesCheckboxes).filter(i => i.checked);
-
-        if (selectedCheckboxes.length > 4) {
-            checkbox.checked = false;
-            alert('You can only select up to 4 causes.');
-            return;
+    // Close modal when clicked outside the modal content
+    window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
+    });
 
-        const selected = selectedCheckboxes.map(i => i.value).join(', ');
-        selectedCauses.textContent = selected || 'Select Causes';
+    // Save selected causes when save button is clicked
+    saveBtn.addEventListener("click", function() {
+        const selectedCauses = Array.from(causeOptions)
+            .filter(cause => cause.checked)
+            .map(cause => cause.value);
+
+        // Update the form input with selected causes
+        const causeInput = document.getElementById("cause");
+        causeInput.value = selectedCauses.join(", ");
+
+        // Close modal after saving
+        modal.style.display = "none";
     });
 });
 
-// Close dropdowns when clicking outside
-document.addEventListener('click', (event) => {
-    if (!event.target.closest('.dropdown')) {
-        skillsDropdownContent.style.display = 'none';
-        causesDropdownContent.style.display = 'none';
-    }
+// Save selected skills when save button is clicked
+saveBtn.addEventListener("click", function() {
+    const selectedSkills = Array.from(skillOptions)
+        .filter(skill => skill.checked)
+        .map(skill => skill.value);
+
+    // Update the skills textbox with the selected skills
+    const skillsInput = document.getElementById("skills");
+    skillsInput.value = selectedSkills.join(", ");
+
+    // Close modal after saving
+    modal.style.display = "none";
 });
 
-function clearCheckboxes() {
-    const allCheckboxes = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
-    allCheckboxes.forEach(checkbox => {
-        checkbox.checked = false;
-    });
+// Save selected causes when save button is clicked
+saveBtn.addEventListener("click", function() {
+    const selectedCauses = Array.from(causeOptions)
+        .filter(cause => cause.checked)
+        .map(cause => cause.value);
 
-    // Reset the displayed text for skills and causes
-    document.getElementById('selectedItems').textContent = 'Select Skills';
-    document.getElementById('selectedCauses').textContent = 'Select Causes';
-}
+    // Update the causes textbox with the selected causes
+    const causesInput = document.getElementById("cause");
+    causesInput.value = selectedCauses.join(", ");
 
+    // Close modal after saving
+    modal.style.display = "none";
+});
 // Call the function when the page loads
 window.onload = clearCheckboxes;

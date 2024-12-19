@@ -1,5 +1,112 @@
-<?php
+<?php 
+session_start();
 include '../components/navbar3.php';
+require '../vendor/autoload.php'; // MongoDB PHP library (if using Composer)
+
+// MongoDB connection string
+$connectionString = "mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.mongodb.net/?retryWrites=true&w=majority&appName=VolunTech";
+
+// 1️⃣ Initialize variables to avoid "undefined variable" errors
+$organization = null;
+$email = $_SESSION['email'] ?? null; // Assuming email is stored in session
+if (!$email) {
+    die('Email is not set. Please log in again.');
+}
+
+// 2️⃣ Move the MongoDB connection **above** usage of $organizationsCollection
+try {
+    // Connect to MongoDB
+    $client = new MongoDB\Client($connectionString);
+    $db = $client->yourDatabaseName; // Replace with your database name
+    $opportunitiesCollection = $db->donations; // Opportunities collection
+    $organizationsCollection = $db->organizations; // Organizations collection
+} catch (Exception $e) {
+    die("Failed to connect to MongoDB: " . $e->getMessage());
+}
+
+// 3️⃣ Use the collection after it is initialized
+$organization = $organizationsCollection->findOne(['email' => $email]);
+
+/*if ($organization) {
+    $_SESSION['organization_id'] = (string) $organization['_id']; // Set organization id
+    header('Location: dashboard2.php'); // Redirect to dashboard
+    exit();
+} else {
+    echo "Invalid login.";
+}*/
+
+// Check if the user is logged in
+if (!isset($_SESSION['organization_id'])) {
+    die("You must be logged in as an organization to create a project.");
+}
+
+// Fetch the organization details
+try {
+    $organizationId = new MongoDB\BSON\ObjectId($_SESSION['organization_id']);
+    $organization = $organizationsCollection->findOne(['_id' => $organizationId]);
+
+    if (!$organization) {
+        die("Invalid organization. Please log in again.");
+    }
+} catch (Exception $e) {
+    die("Error fetching organization: " . $e->getMessage());
+}
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve form data
+    $title = $_POST['title'];
+    $organizer = $_POST['organizer'];
+    $cause = $_POST['cause'];
+    $startDate = $_POST['start_date'];
+    $endDate = $_POST['end_date'];
+    $image = $_FILES['image'];
+
+    // Validate start and end dates
+    if (empty($startDate) || empty($endDate)) {
+        die("Start date or End date is missing.");
+    }
+
+    // Debugging: Check if start and end dates are valid
+    var_dump($_POST); // Log the form data for debugging
+
+    $startDate = date('Y-m-d', strtotime($startDate)); // Format date as "YYYY-MM-DD"
+    $endDate = date('Y-m-d', strtotime($endDate)); // Format date as "YYYY-MM-DD"
+
+    // Handle file upload
+    $uploadDir = '../uploads/';
+    $fileName = uniqid() . '-' . basename($image['name']);
+    $filePath = $uploadDir . $fileName;
+
+    if (!move_uploaded_file($image['tmp_name'], $filePath)) {
+        die("Failed to upload image.");
+    }
+
+    // Prepare the data to be inserted
+    $project = [
+        'title' => $title,
+        'organizer' => $organizer,
+        'cause' => explode(',', $cause),
+        'start_date' => $startDate,
+        'end_date' => $endDate,
+        'image_path' => $filePath,
+        'organization_id' => $organizationId, // Link to organization
+        'created_at' => new MongoDB\BSON\UTCDateTime()
+    ];
+    // Insert the project into the opportunities collection
+    try {
+        $insertResult = $opportunitiesCollection->insertOne($project);
+        if ($insertResult->getInsertedCount() > 0) {
+            echo "<script>alert('Project created successfully!');</script>";
+            header('Location: org.php'); // Redirect to a success page
+            exit;
+        } else {
+            echo "<script>alert('Failed to create project.');</script>";
+        }
+    } catch (Exception $e) {
+        die("Error inserting project: " . $e->getMessage());
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,16 +133,16 @@ include '../components/navbar3.php';
         <input type="text" id="organizer" name="organizer" required placeholder="Organizer Name">
     </div>
     <div>
-        <label for="skills">Cause Area</label>
+        <label for="location">Cause Area</label>
         <input type="text" autocomplete="off" id="cause" name="cause" placeholder="Select cause area" required readonly>
     </div>
     <div>
         <label for="date">Start Date</label>
-        <input type="date" id="date" name="date" required>
+        <input type="date" id="start_date" name="start_date" required>
     </div>
     <div>
         <label for="date">End Date</label>
-        <input type="date" id="date" name="date" required>
+        <input type="date" id="end_date" name="end_date" required>
     </div>
     <div>
         <label for="image">Upload Banner</label>

@@ -118,6 +118,39 @@
     gap: 15px;
 }
 
+.selected-items {
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: relative;
+}
+
+.update {
+    display: inline-block;
+    padding: 1.5vh 0;
+    width: 100%;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: inherit;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 2vh;
+}
+
+.update:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
 .preference-item {
     display: flex;
     align-items: center;

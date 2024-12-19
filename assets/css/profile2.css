@@ -1,29 +1,7 @@
-body {
-    /* Set minimum height and flexbox layout for body */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    font-family: ubuntu-regular;
-    color: #333;
-    background-color: var(--body-background-color);
-}
 
-.container {
-    /* container styling for the main content */
-    max-width: 600%;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.container h1{
+
+.container2 h1{
     /* Heading 1 styling */
     font-size: 30px;
     text-align: center;
@@ -32,7 +10,7 @@ body {
 
 }
 
-.container h2 {
+.container2 h2 {
     text-align: center;
     font-size: 20px;
     font-family: 'Lato', sans-serif;
@@ -40,14 +18,14 @@ body {
     margin: 15px;
 }
 
-.container p {
+.container2 p {
     font-size: 14px;
     text-align: center;
     margin-top: 10px;
     color: #666;
 }
 
-.container a {
+.container2 a {
     /* Link styling with gradient background */
     background: linear-gradient(90deg, #88544d, #8d8f52 40%, #3a9b45 69%, #4d5589);
     background-clip: text;
@@ -62,13 +40,13 @@ body {
     margin: 10px 0;
 }
 
-.container a:hover{
+.container2 a:hover{
     -webkit-text-fill-color: #5d51e5;
     color:#5d51e5;
     text-decoration: none;
 }
 
-.container a { 
+.container2 a { 
     background: linear-gradient(90deg, #88544d, #8d8f52 40%, #3a9b45 69%, #4d5589);
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -77,7 +55,7 @@ body {
     text-align: center;
 }
 
-.form-container a:hover {
+.form-container2 a:hover {
     -webkit-text-fill-color: #5d51e5;
     color: #5d51e5;
 }
@@ -121,8 +99,8 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
-   transform: scale(1.05);
+    background-color: #0056b3;
+    transform: scale(1.05);
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -154,7 +132,7 @@ button[type="submit"]:hover {
     cursor: pointer;
 }
 @media (max-width: 480px) {
-.container {
+.container2 {
     padding: 20px;
 }
 }
@@ -197,7 +175,6 @@ box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 } 
 
 .modal-content {
-    position: relative; /* Ensure the modal content is positioned relatively */
     background-color: #fff;
     padding: 25px;
     border-radius: 8px;
@@ -213,12 +190,10 @@ box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .close {
-    position: absolute; /* Position the close button absolutely */
-    top: 10px; /* Position it 10px from the top */
-    right: 10px; /* Position it 10px from the right */
     color: #aaa;
     font-size: 24px;
     font-weight: bold;
+    align-self: flex-end;
     cursor: pointer;
     transition: color 0.3s ease;
 }
@@ -403,7 +378,7 @@ background-color: #003e80;
 }
 
 #organizationtype {
-    width: calc(105% - 22px); /* Adjust width to fit within container */
+    width: calc(105% - 22px); /* Adjust width to fit within container2 */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -415,7 +390,7 @@ background-color: #003e80;
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
-    .container {
+    .container2 {
         max-width: 90%; /* Reduce max-width for smaller screens */
         padding: 15px; /* Adjust padding */
     }
