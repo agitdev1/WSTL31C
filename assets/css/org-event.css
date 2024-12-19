@@ -11,8 +11,9 @@ body {
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    padding: 5px;
+    border-radius: 5px;
 }
-
 .header {
     position: relative;
     text-align: center;
@@ -20,7 +21,6 @@ body {
 }
 
 .header img {
-    width: 70%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -32,7 +32,7 @@ body {
 }
 
 .content {
-    padding: 15px; /* Reduced padding */
+    padding: 15px; 
 }
 
 .content h2 {
@@ -41,21 +41,21 @@ body {
 
 .content p {
     line-height: 1.6;
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px; 
     color: #555;
 }
 
 .features {
-    margin: 15px 0; /* Reduced margin */
+    margin: 15px 0; 
 }
 
 .features ul {
     list-style: disc;
-    margin: 5px 0 5px 20px; /* Reduced margin */
+    margin: 5px 0 5px 20px; 
 }
 
 .volunteer-role {
-    margin: 15px 0; /* Reduced margin */
+    margin: 15px 0; 
 }
 
 .image-container {
@@ -66,18 +66,18 @@ body {
 }
 
 .image-container img {
-    width: 100%; 
+    width: 65%; 
     height: auto; 
     display: block; 
 }
 
 .event-details {
-    padding: 15px; /* Reduced padding */
+    padding: 15px; 
 }
 
 .event-details h1 {
     font-size: 24px;
-    margin-bottom: 15px; /* Reduced margin */
+    margin-bottom: 15px; 
     color: #3e3e3e;
     text-align: center;
 }
@@ -90,7 +90,7 @@ body {
 .event-details li {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px; 
 }
 
 .event-details i {
@@ -131,7 +131,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px; 
 }
 
 .edit-button {

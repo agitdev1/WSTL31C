@@ -22,10 +22,11 @@ require_once '../components/navbar3.php';
 </div>
 <div class="event-details">
     <h3>Event Status</h3>
-    <button class="edit-button" onclick="editProjectStatus()">Edit Event Status</button>
+    <button class="edit-button" onclick="editProjectStatus()">Edit</button>
     <button class="complete-button" onclick="completeEvent()">Mark as Completed</button>
     <button class="cancel-button" onclick="cancelEvent()">Cancel Event</button>
     <p><strong> Cause Area:</strong> Life on Land</p>
+    <p><strong> Skills Needed:</strong>  Communication Skills, Advocacy, Ethical Decision-Making</p>
     <p><strong>Volunteers Needed:</strong> 5</p>
     <p><strong> Volunteers Registered:</strong> 3</p>
     <p><strong> Days Left:</strong> 1</p>
@@ -49,7 +50,7 @@ require_once '../components/navbar3.php';
         </li>
         <li>
             <i class="fa fa-users" aria-hidden="true"></i>
-            <small><a href="/organization/232">Animal Protectors</a></small>
+            <small><a href="../pages/oops2.php">Animal Protectors</a></small>
         </li>
         <li>
             <i class="fa fa-phone" aria-hidden="true"></i>
