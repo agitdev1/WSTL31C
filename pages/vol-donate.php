@@ -79,7 +79,7 @@ require_once '../components/navbar2.php';
     </div>
     </div>
     <?php require_once '../components/footer2.php'; ?>
-    <script src="../assets/js/org-event.js?v=<?php echo time(); ?>"></script>
+    <script src="../assets/js/vol-donate.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>
 
