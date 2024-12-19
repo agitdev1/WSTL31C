@@ -13,11 +13,13 @@ body {
     overflow: hidden;
     padding: 5px;
     border-radius: 5px;
+
 }
 .header {
-    position: relative;
+    margin: 50px auto;
+    position: center;
     text-align: center;
-    color: white;
+    color: rgb(27, 26, 26);
 }
 
 .header img {
@@ -78,18 +80,31 @@ body {
     font-size: 24px;
     margin-bottom: 15px; 
     color: #3e3e3e;
-    text-align: center;
+    text-align: start;
+}
+
+.event-details {
+    flex: 1;
+    padding: 20px;
+    max-width: 50%; 
+    box-sizing: border-box;
+    text-align: left; 
+}
+
+.event-details h1, 
+.event-details h3, 
+.event-details p, 
+.event-details ul {
+    margin: 0 0 10px 0; 
 }
 
 .event-details ul {
-    list-style: none;
-    padding: 0;
+    padding-left: 0; 
+    list-style-type: none; 
 }
 
 .event-details li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; 
+    margin-bottom: 5px; 
 }
 
 .event-details i {
@@ -207,6 +222,67 @@ body {
 }
 
 .volunteer-button:hover, .unjoin-button:hover {
-    background-color: #45a049; /* Example hover color */
+    background-color: #45a049; 
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1000px; /* Adjust as needed */
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px; /* Space between header and content */
+}
+
+.image-container {
+    flex: 1;
+    max-width: 40%; /* Adjust to resize the image */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.event-details {
+    flex: 1;
+    padding: 20px;
+    max-width: 50%; 
+    box-sizing: border-box;
+}
+
+.content {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px; 
+    text-align:start;
+    margin-top:20px;
+}
+
+.event-status {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left; 
+}
+
+.event-details-container {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px; 
+}
+
+
+.event-details-container li {
+    margin-bottom: 5px; 
+}

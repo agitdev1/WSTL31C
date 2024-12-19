@@ -76,7 +76,7 @@ include '../components/navbar2.php';
 
         foreach ($events as $event) {
             echo '<div class="gallery-item">';
-            echo '<a target="_blank" href="../pages/oops.php" rel="noopener noreferrer">';
+            echo '<a href="../pages/vol-donate.php" rel="noopener noreferrer">';
             echo '<img src="' . htmlspecialchars($event['image']) . '" alt="' . htmlspecialchars($event['alt']) . '">';
             echo '</a>';
             echo '<div class="desc">' . htmlspecialchars($event['desc']) . '</div>';

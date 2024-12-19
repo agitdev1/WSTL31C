@@ -76,7 +76,7 @@ require_once '../components/navbar2.php';
 
         foreach ($events as $event) {
             echo '<div class="gallery-item">';
-            echo '<a target="_blank" href="../pages/oops.php" rel="noopener noreferrer">';
+            echo '<a href="../pages/vol-event.php" rel="noopener noreferrer">';
             echo '<img src="' . $event['image'] . '" alt="' . $event['alt'] . '">';
             echo '</a>';
             echo '<div class="desc">' . $event['desc'] . '</div>';

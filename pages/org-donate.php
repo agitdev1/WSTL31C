@@ -20,7 +20,7 @@ require_once '../components/navbar3.php';
     </div>
 </div>
 <div class="event-details">
-    <h3>Event Status</h3>
+    <h3>Project Status</h3>
     <button class="edit-button" onclick="editProjectStatus()">Edit</button>
     <button class="complete-button" onclick="completeEvent()">Mark as Completed</button>
     <button class="cancel-button" onclick="cancelEvent()">Cancel Event</button>
