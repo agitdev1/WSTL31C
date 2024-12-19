@@ -1,5 +1,5 @@
 <?php 
-require_once '../components/navbar3.php';
+require_once '../components/navbar2.php';
 ?>
 
 <!Doctype html>
@@ -9,7 +9,7 @@ require_once '../components/navbar3.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Organizer Event</title>
         <link rel="stylesheet" href="../assets/css/styles.css?v=<?php echo time(); ?>">
-        <link rel="stylesheet" href="../assets/css/org-event.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../assets/css/vol-event.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
@@ -20,10 +20,7 @@ require_once '../components/navbar3.php';
     <img src="https://via.placeholder.com/1080x1350" alt="Feline Frolic Poster">    </div>
 </div>
 <div class="event-details">
-    <h3>Project Status</h3>
-    <button class="edit-button" onclick="editProjectStatus()">Edit</button>
-    <button class="complete-button" onclick="completeEvent()">Mark as Completed</button>
-    <button class="cancel-button" onclick="cancelEvent()">Cancel Event</button>
+    <h3>Event Status</h3>
     <p><strong> Cause Area:</strong> </p>
     <p><strong> Skills Needed:</strong>  </p>
     <p><strong>Volunteers Needed:</strong> </p>
@@ -32,8 +29,7 @@ require_once '../components/navbar3.php';
     <p><strong> Status: </strong> <span id="event-status" class="status-ongoing">Ongoing</span></p>
 </div>
 <div class="event-details">
-    <h3>Project Details</h3>
-    <button class="edit-button" onclick="editProjectDetails()">Edit Project Details</button>
+    <h3>Event Details</h3>
     <ul>
         <li>
             <i class="fa fa-location-arrow" aria-hidden="true"></i>
@@ -66,7 +62,7 @@ require_once '../components/navbar3.php';
             <p>Description about the event</p>
         </div>
     </div>
-    <?php require_once '../components/footer3.php'; ?>
+    <?php require_once '../components/footer2.php'; ?>
     <script src="../assets/js/org-event.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>

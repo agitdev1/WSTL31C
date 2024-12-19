@@ -20,17 +20,17 @@ include '../components/navbar2.php';
             "items" => [
                 [
                     "image" => "../assets/images/event1.jpg",
-                    "link" => "../pages/events.php",
+                    "link" => "../pages/vol-event.php",
                     "description" => "Event Volunteers Needed for Feline Frolic Event"
                 ],
                 [
                     "image" => "../assets/images/event2.jpg",
-                    "link" => "../pages/events.php",
+                    "link" => "../pages/vol-event.php",
                     "description" => "Luntiang Marikina: Marikina River Clean Up Activity for November 2024"
                 ],
                 [
                     "image" => "../assets/images/event3.png",
-                    "link" => "../pages/events.php",
+                    "link" => "../pages/vol-donate.php",
                     "description" => "Sacks of Rice for Karinderia ni Mang Urot"
                 ],
             ]
@@ -40,17 +40,17 @@ include '../components/navbar2.php';
             "items" => [
                 [
                     "image" => "../assets/images/event4.jpeg",
-                    "link" => "../pages/volunteer.php",
+                    "link" => "../pages/vol-event.php",
                     "description" => "Teaching Financial Literacy to Kids"
                 ],
                 [
                     "image" => "../assets/images/event5.jpeg",
-                    "link" => "../pages/volunteer.php",
+                    "link" => "../pages/vol-event.php",
                     "description" => "Brighten a Foster Child's Day"
                 ],
                 [
                     "image" => "../assets/images/event6.jpeg",
-                    "link" => "../pages/oops.php",
+                    "link" => "../pages/vol-event.php",
                     "description" => "Feeding Program"
                 ],
             ]
@@ -60,17 +60,17 @@ include '../components/navbar2.php';
             "items" => [
                 [
                     "image" => "../assets/images/donate1.jpeg",
-                    "link" => "../pages/donate.php",
+                    "link" => "../pages/vol-donate.php",
                     "description" => "Operation Tulong Lycean: Donation for Bagyon Kristine Victims"
                 ],
                 [
                     "image" => "../assets/images/donate2.jpg",
-                    "link" => "../pages/donate.php",
+                    "link" => "../pages/vol-donate.php",
                     "description" => "Dugong Lycean Para sa Bayan: A Blood Donation Drive"
                 ],
                 [
                     "image" => "../assets/images/donate3.jpg",
-                    "link" => "../pages/donate.php",
+                    "link" => "../pages/vol-donate.php",
                     "description" => "Underwear Donation for Typhoon Survivors"
                 ],
             ]

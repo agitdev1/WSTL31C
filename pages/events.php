@@ -5,14 +5,16 @@ $events = [
     [
         'image' => '../assets/images/event1.jpg',
         'title' => 'Event Volunteers Needed for Feline Frolic Event',
+        "link" => "../pages/vol-event.php",
         'location' => 'White Sand Beach, Coastal City, 56789',
         'date' => 'Dec 20, 2024',
         'time' => '07:00 AM - 11:00 AM',
-        'organization' => 'Ocean Protectors'
+        'organization' => 'Animal Protectors'
     ],
     [
         'image' => '../assets/images/event2.jpg',
         'title' => 'Luntiang Marikina: Marikina River Clean Up Activity for November 2024',
+        "link" => "../pages/vol-event.php",
         'location' => '123 Charity Street, Green City, 12345',
         'date' => 'Jan 10, 2025',
         'time' => '09:00 AM - 01:00 PM',
@@ -72,7 +74,6 @@ $events = [
     <div class="gallery">
         <?php foreach ($events as $event): ?>
             <div class="gallery-item">
-            <a target="_blank" href="../pages/oops.php" rel="noopener noreferrer">
                     <img src="<?php echo htmlspecialchars($event['image']); ?>" alt="<?php echo htmlspecialchars($event['title']); ?>">
                 </a>
                 <div class="desc"><?php echo htmlspecialchars($event['title']); ?></div>
