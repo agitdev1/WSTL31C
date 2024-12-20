@@ -1,11 +1,4 @@
 <?php
-session_start();
-
-// Check if user is logged in and is an organization
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'organization') {
-    header('Location: ../pages/login.php'); // Corrected the path
-    exit;
-}
 include '../components/navbar3.php';
 ?>
 <!DOCTYPE html>

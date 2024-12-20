@@ -98,71 +98,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Form submission
-// Get the form element
-// Add an event listener to the form submission
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("volunteerForm");
+    const form = document.getElementById("organizationForm");
 
-    form.addEventListener("submit", async function(event) {
+    form.addEventListener("submit", function(event) {
         event.preventDefault();
-
-        // Get form data
-        const formData = new FormData(form);
-        const emailValue = formData.get("email");
-        const passwordValue = formData.get("password");
-
-        // Password complexity requirements
-        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-        if (!passwordRegex.test(passwordValue)) {
-            alert("Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.");
-            return;
-        }
-
-        // Continue with form submission
-        try {
-            const response = await fetch(`/check_email?email=${emailValue}`, {
-                method: "GET"
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to check email availability");
-            }
-
-            const data = await response.json();
-
-            if (!data.available) {
-                const signInInstead = confirm("This email is already registered. Would you like to sign in instead?");
-                if (signInInstead) {
-                    window.location.href = "../pages/login.php"; // Redirect to login page
-                    return;
-                } else {
-                    return; // Do not proceed with registration
-                }
-            }
-        } catch (error) {
-            console.error("Error:", error.message);
-            alert("An error occurred while checking email availability. Please try again later.");
-            return;
-        }
-
-        // If email is available, continue with form submission
-        try {
-            const response = await fetch("/register/volunteer", {
-                method: "POST",
-                body: formData
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to submit form");
-            }
-            // Prompt the user that registration was successful
-            window.alert("Registered successfully.");
-            setTimeout(function() {
-                window.location.href = "../pages/login.php"; // Redirect to login page
-            }, 3000); // 3000 milliseconds = 3 seconds
-        } catch (error) {
-            console.error("Error:", error.message);
-            alert("An error occurred while registering. Please try again later.");
-        }
+        // Directly redirect to the login page
+        window.location.href = "../pages/login.php";
     });
-})});
+});
