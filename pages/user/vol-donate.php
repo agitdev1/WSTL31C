@@ -1,5 +1,5 @@
 <?php 
-require_once '../components/navbar2.php';
+require_once '../../components/navbar2.php';
 ?>
 
 <!Doctype html>
@@ -8,9 +8,9 @@ require_once '../components/navbar2.php';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Event Details</title>
-        <link rel="stylesheet" href="../assets/css/styles.css?v=<?php echo time(); ?>">
-        <link rel="stylesheet" href="../assets/css/vol-donate.css?v=<?php echo time(); ?>">
-        <link rel="stylesheet" href="../assets/css/modal-donate.css"> 
+        <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../../assets/css/vol-donate.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../../assets/css/modal-donate.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
@@ -37,7 +37,7 @@ require_once '../components/navbar2.php';
             </li>
             <li>
                 <i class="fa fa-users" aria-hidden="true"></i>
-                <small><a href="../pages/oops2.php">Organizer</a></small>
+                <small><a href="../../pages/user/oops2.php">Organizer</a></small>
             </li>
             <li>
                 <i class="fa fa-phone" aria-hidden="true"></i>
@@ -78,8 +78,8 @@ require_once '../components/navbar2.php';
     </div>
     </div>
     </div>
-    <?php require_once '../components/footer2.php'; ?>
-    <script src="../assets/js/vol-donate.js?v=<?php echo time(); ?>"></script>
+    <?php require_once '../../components/footer2.php'; ?>
+    <script src="../../assets/js/vol-donate.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>
 

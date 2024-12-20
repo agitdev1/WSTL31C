@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar2.php';
+include '../../components/navbar2.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,8 +8,8 @@ include '../components/navbar2.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/contact.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/contact.css">
 </head>
 <body>
     <div class="main-content">
@@ -29,6 +29,6 @@ include '../components/navbar2.php';
         </form>
     </div>
 
-    <?php require_once '../components/footer2.php'; ?>
+    <?php require_once '../../components/footer2.php'; ?>
 </body>
 </html>

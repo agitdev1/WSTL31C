@@ -7,7 +7,7 @@ $connectionString = "mongodb+srv://somedudein:g8qSNOKbcS7Uh39d@voluntech.waoix.m
 
 // Check if user is logged in and is an organization
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'organization') {
-    header('Location: ../pages/login.php');
+    header('Location: ../../pages/login.php');
     exit;
 }
 
@@ -103,8 +103,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 <body>
 <div class="main-content">

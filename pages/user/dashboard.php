@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar2.php';
+include '../../components/navbar2.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,19 +7,21 @@ include '../components/navbar2.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
 </head>
 <body>
     <div class="container">
     <div class="sidebar">
             <ul class="menu">
-                <li class="menu-item active"><a href="../user/pages/dashboard.php">User Dashboard</a></li>
-                <li class="menu-item "><a href="../pages/user/profile.php">Profile</a></li>
-                <li class="menu-item"><a href="../pages/user/history.php">My History</a></li>                
+                <li class="menu-item active"><a href="../../pages/user/dashboard.php">User Dashboard</a></li>
+                <li class="menu-item "><a href="../../pages/user/profile.php">Profile</a></li>
+                <li class="menu-item"><a href="../../pages/user/history.php">My History</a></li>                
                 <li class="menu-item"><hr></li>
-                <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
+                <li class="menu-item"><a href="../../pages/index.php">Logout</a></li>
             </ul>
         </div>
         <div class="content">
@@ -55,7 +57,7 @@ include '../components/navbar2.php';
             </div>
         </div>
     </div>
-    <?php require_once '../components/footer2.php'; ?>
+    <?php require_once '../../components/footer2.php'; ?>
 </body>
 </html>
 

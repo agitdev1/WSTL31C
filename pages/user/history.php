@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/history.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../assets/css/history.css">
 </head>
 <body>
-<?php include '../components/navbar2.php'; ?>
+<?php include '../../components/navbar2.php'; ?>
 
 <div class="container">
     <div class="sidebar">
     <ul class="menu">
-                <li class="menu-item"><a href="../pages/user/dashboard.php">User Dashboard</a></li>
-                <li class="menu-item "><a href="../pages/user/profile.php">Profile</a></li>
-                <li class="menu-item active"><a href="../user/pages/history.php">My History</a></li>                
+                <li class="menu-item"><a href="../../pages/user/dashboard.php">User Dashboard</a></li>
+                <li class="menu-item "><a href="../../pages/profile.php">Profile</a></li>
+                <li class="menu-item active"><a href="../../pages/user/history.php">My History</a></li>                
                 <li class="menu-item"><hr></li>
-                <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
+                <li class="menu-item"><a href="../../pages/index.php">Logout</a></li>
             </ul>
     </div>
     <div class="main-content">
@@ -119,6 +119,6 @@ function showTab(tabName) {
 }
 </script>
 
-<?php require_once '../components/footer2.php'; ?>
+<?php require_once '../../components/footer2.php'; ?>
 </body>
 </html>
