@@ -119,6 +119,7 @@ $events = [
 <<<<<<< HEAD:pages/user/events.php
 <<<<<<< HEAD:pages/user/events.php
 <<<<<<< HEAD:pages/user/events.php
+<<<<<<< HEAD:pages/user/events.php
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const galleryItems = document.querySelectorAll('.gallery-item');
@@ -131,6 +132,9 @@ $events = [
             });
         });
     });
+=======
+<script src="../assets/js/events.js"></script>
+>>>>>>> parent of 931b028 (Gyawa):pages/events.php
 =======
 <script src="../assets/js/events.js"></script>
 >>>>>>> parent of 931b028 (Gyawa):pages/events.php
