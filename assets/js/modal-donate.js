@@ -31,4 +31,3 @@ function closeModal() {
     const modalForm = document.getElementById('donationForm');
     modalForm.reset();
 }
-

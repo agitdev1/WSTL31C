@@ -1,60 +1,61 @@
 <?php
 include '../../components/navbar2.php';
-// events list
+
+// Events list
 $events = [
     [
         'image' => '../../assets/images/event1.jpg',
         'title' => 'Event Volunteers Needed for Feline Frolic Event',
-        'location' => 'White Sand Beach, Coastal City',
+        'link' => '../../pages/user/vol-event.php',
+        'location' => 'White Sand Beach, Coastal City, 56789',
         'date' => 'Dec 20, 2024',
         'time' => '07:00 AM - 11:00 AM',
-        'organization' => 'Animal Protectors',
-        'redirect' => '../vol-event.php'
+        'organization' => 'Animal Protectors'
     ],
     [
         'image' => '../../assets/images/event2.jpg',
         'title' => 'Luntiang Marikina: Marikina River Clean Up Activity for November 2024',
-        'location' => '123 Charity Street, Green City',
+        'link' => '../../pages/user/vol-event.php',
+        'location' => '123 Charity Street, Green City, 12345',
         'date' => 'Jan 10, 2025',
         'time' => '09:00 AM - 01:00 PM',
-        'organization' => 'Green Earth Volunteers',
-        'redirect' => 'vol-event.php'
+        'organization' => 'Green Earth Volunteers'
     ],
     [
         'image' => '../../assets/images/event3.png',
         'title' => 'Sacks of Rice for Karinderia ni Mang Urot',
-        'location' => '453 Giving Street, Global City',
+        'link' => '../../pages/user/vol-event.php',
+        'location' => '453 Giving Street, Global City, 12345',
         'date' => 'Jan 12, 2025',
-        'time' => 'N/A',
-        'organization' => 'The Givers',
-        'redirect' => 'vol-donate.php'
+        'time' => '07:00 AM - 05:00 PM',
+        'organization' => 'The Givers'
     ],
     [
-        "image" => "../../assets/images/events/event1.png",
-        "title" => "Project Baon, A Day of Volunteer Service",
-        "location" => "789 Charity Lane, Hope Town",
-        "date" => "Mar 15, 2025",
-        "time" => "10:00 AM - 02:00 PM",
-        "organization" => "Helping Hands",
-        "redirect" => 'vol-event.php'
+        'image' => '../../assets/images/events/event1.png',
+        'title' => 'Project Baon, A Day of Volunteer Service',
+        'link' => '../../pages/user/vol-event.php',
+        'location' => '789 Charity Lane, Hope Town, 54321',
+        'date' => 'Mar 15, 2025',
+        'time' => '10:00 AM - 02:00 PM',
+        'organization' => 'Helping Hands'
     ],
     [
-        "image" => "../../assets/images/events/event2.png",
-        "title" => "Feed the Hungry",
-        "location" => "321 Green Park, Nature City",
-        "date" => "Apr 22, 2025",
-        "time" => "07:00 AM - 11:00 AM",
-        "organization" => "Eco Warriors",
-        "redirect" => 'vol-event.php'
+        'image' => '../../assets/images/events/event2.png',
+        'title' => 'Feed the Hungry'
+        'link' => '../../pages/user/vol-event.php',,
+        'location' => '321 Green Park, Nature City, 98765',
+        'date' => 'Apr 22, 2025',
+        'time' => '07:00 AM - 11:00 AM',
+        'organization' => 'Eco Warriors'
     ],
     [
-        "image" => "../../assets/images/events/event3.png",
-        "title" => "Blood Donation Volunteer Support",
-        "location" => "654 Health Blvd, Wellness City",
-        "date" => "May 5, 2025",
-        "time" => "09:00 AM - 03:00 PM",
-        "organization" => "Life Savers",
-        "redirect" => 'vol-donate.php'
+        'image' => '../../assets/images/events/event3.png',
+        'title' => 'Blood Donation Volunteer Support',
+        'link' => '../../pages/user/vol-event.php',
+        'location' => '654 Health Blvd, Wellness City, 11223',
+        'date' => 'May 5, 2025',
+        'time' => '09:00 AM - 03:00 PM',
+        'organization' => 'Life Savers'
     ]
 ];
 ?>
@@ -74,7 +75,7 @@ $events = [
     <h1>Upcoming Events</h1>
     <div class="gallery">
         <?php foreach ($events as $event): ?>
-            <div class="gallery-item" data-redirect="<?php echo htmlspecialchars($event['redirect']); ?>">
+            <div class="gallery-item">
                 <img src="<?php echo htmlspecialchars($event['image']); ?>" alt="<?php echo htmlspecialchars($event['title']); ?>">
                 <div class="desc"><?php echo htmlspecialchars($event['title']); ?></div>
                 <p class="card-location">
@@ -93,7 +94,7 @@ $events = [
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <small><?php echo htmlspecialchars($event['organization']); ?></small>
                 </p>
-                <form action="" method="POST">
+                <form action="../../process_registration.php" method="POST">
                     <?php if (!empty($_SESSION['csrf_token'])): ?>
                         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <?php endif; ?>
@@ -102,6 +103,7 @@ $events = [
                     <input type="hidden" name="date" value="<?php echo htmlspecialchars($event['date']); ?>">
                     <input type="hidden" name="time" value="<?php echo htmlspecialchars($event['time']); ?>">
                     <input type="hidden" name="organization" value="<?php echo htmlspecialchars($event['organization']); ?>">
+                    <button type="submit" class="donate-button">Register Now</button>
                 </form>
             </div>
         <?php endforeach; ?>
@@ -120,6 +122,6 @@ $events = [
             });
         });
     });
-    </script>
+</script>
 </body>
 </html>
