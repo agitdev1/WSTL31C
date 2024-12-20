@@ -1,7 +1,7 @@
 <nav class="navbar">
     <!-- logo -->
     <div class="navbar-logo">
-        <a href="../pages/index.php">
+        <a href="../../pages/index.php">
             <img src="../assets/images/logo.png" alt="Your Logo"/>
         </a>
     </div>

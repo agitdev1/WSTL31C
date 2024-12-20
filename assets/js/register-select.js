@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
       section.addEventListener('click', function() {
         const registerType = this.getAttribute('data-register-type');
         if (registerType === 'volunteer') {
-          window.location.href = 'register.php'; // Redirect to volunteer registration
+          window.location.href = '../pages/user/register.php'; // Redirect to volunteer registration
         } else if (registerType === 'organization') {
-          window.location.href = 'register-org.php'; // Redirect to organization registration
+          window.location.href = '../pages/admin/register-org.php'; // Redirect to organization registration
         }
       });
     });

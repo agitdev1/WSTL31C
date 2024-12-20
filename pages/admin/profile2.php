@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../assets/css/profile.css">
 
 </head>
 <body>
-<?php include '../components/navbar3.php'; ?>
+<?php include '../../components/navbar3.php'; ?>
 
 <div class="container">
     <div class="sidebar">
     <ul class="menu">
-                <li class="menu-item"><a href="../pages/dashboard2.php">Organization Dashboard</a></li>
-                <li class="menu-item active"><a href="../pages/profile2.php">Profile</a></li>
-                <li class="menu-item"><a href="../pages/history2.php"> History</a></li>                
+                <li class="menu-item"><a href="../../pages/admin/dashboard2.php">Organization Dashboard</a></li>
+                <li class="menu-item active"><a href="../../pages/admin/profile2.php">Profile</a></li>
+                <li class="menu-item"><a href="../../pages/admin/history2.php"> History</a></li>                
                 <li class="menu-item"><hr></li>
-                <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
+                <li class="menu-item"><a href="../../pages/index.php">Logout</a></li>
             </ul>
     </div>
     
@@ -109,6 +111,6 @@
     </div>
 </div>
 
-<?php require_once '../components/footer3.php'; ?>
+<?php require_once '../../components/footer3.php'; ?>
 </body>
 </html>

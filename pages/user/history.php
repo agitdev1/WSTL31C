@@ -14,9 +14,9 @@
 <div class="container">
     <div class="sidebar">
     <ul class="menu">
-                <li class="menu-item"><a href="../pages/dashboard.php">User Dashboard</a></li>
-                <li class="menu-item "><a href="../pages/profile.php">Profile</a></li>
-                <li class="menu-item active"><a href="../pages/history.php">My History</a></li>                
+                <li class="menu-item"><a href="../pages/user/dashboard.php">User Dashboard</a></li>
+                <li class="menu-item "><a href="../pages/user/profile.php">Profile</a></li>
+                <li class="menu-item active"><a href="../user/pages/history.php">My History</a></li>                
                 <li class="menu-item"><hr></li>
                 <li class="menu-item"><a href="../pages/index.php">Logout</a></li>
             </ul>

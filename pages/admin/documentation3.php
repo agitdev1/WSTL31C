@@ -1,10 +1,10 @@
 <?php
-include '../components/navbar3.php';
+include '../../components/navbar3.php';
 session_start();
 
 // Configuration
 $config = [
-    'pdfPath' => '../assets/documents/sample.pdf',  // Update with your PDF path
+    'pdfPath' => '../../assets/documents/sample.pdf',  // Update with your PDF path
     'fileName' => 'document.pdf'
 ];
 
@@ -19,8 +19,8 @@ if (empty($_SESSION['csrf_token'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/documentation.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/documentation.css">
 
 </head>
 <body>
@@ -34,12 +34,12 @@ if (empty($_SESSION['csrf_token'])) {
             </button>
         </div>
         <div class="pdf-frame">
-            <iframe id="pdfViewer" src="..\assets\pdf\WSTL31C-DOCUMENTATION.pdf" type="application/pdf"></iframe>
+            <iframe id="pdfViewer" src="../..\assets\pdf\WSTL31C-DOCUMENTATION.pdf" type="application/pdf"></iframe>
         </div>
     </div>
 </div>
-<?php require_once '../components/footer3.php'; ?>
-<script src="../assets/js/documentation.js"></script>
+<?php require_once '../../components/footer3.php'; ?>
+<script src="../../assets/js/documentation.js"></script>
 </body>
 </html>
 

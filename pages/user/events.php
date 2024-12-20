@@ -120,6 +120,5 @@ $events = [
             });
         });
     });
-</script>
 </body>
 </html>

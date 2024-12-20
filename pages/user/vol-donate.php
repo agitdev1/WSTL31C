@@ -37,7 +37,7 @@ require_once '../components/navbar2.php';
             </li>
             <li>
                 <i class="fa fa-users" aria-hidden="true"></i>
-                <small><a href="../pages/oops3.php">Organizer</a></small>
+                <small><a href="../pages/oops2.php">Organizer</a></small>
             </li>
             <li>
                 <i class="fa fa-phone" aria-hidden="true"></i>

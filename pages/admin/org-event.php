@@ -1,5 +1,5 @@
 <?php 
-require_once '../components/navbar3.php';
+require_once '../../components/navbar3.php';
 ?>
 
 <!Doctype html>
@@ -8,8 +8,8 @@ require_once '../components/navbar3.php';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Organizer Event</title>
-        <link rel="stylesheet" href="../assets/css/styles.css?v=<?php echo time(); ?>">
-        <link rel="stylesheet" href="../assets/css/org-event.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../../assets/css/org-event.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
@@ -66,8 +66,8 @@ require_once '../components/navbar3.php';
             <p>Description about the event</p>
         </div>
     </div>
-    <?php require_once '../components/footer3.php'; ?>
-    <script src="../assets/js/org-event.js?v=<?php echo time(); ?>"></script>
+    <?php require_once '../../components/footer3.php'; ?>
+    <script src="../../assets/js/org-event.js?v=<?php echo time(); ?>"></script>
     </body>
 </html>
 

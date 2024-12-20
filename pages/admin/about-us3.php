@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar2.php';
+include '../../components/navbar3.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,13 +7,13 @@ include '../components/navbar2.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upcoming Volunteering Events</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="main-content">
-<img src="../assets/images/banner.jpg" alt="Volunteering Events Banner" class="banner-image">
+<img src="../../assets/images/banner.jpg" alt="Volunteering Events Banner" class="banner-image">
     <h1>About Us</h1>
     <div class="about-section">
         <div class="about-text">
@@ -24,6 +24,6 @@ include '../components/navbar2.php';
     </div>
 </div>
 
-<?php require_once '../components/footer2.php'; ?>
+<?php require_once '../../components/footer3.php'; ?>
 </body>
 </html>
