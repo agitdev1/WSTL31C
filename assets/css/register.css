@@ -1,0 +1,446 @@
+body {
+    /* Set minimum height and flexbox layout for body */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: ubuntu-regular;
+    color: #333;
+    background-color: var(--body-background-color);
+}
+
+.container {
+    /* Container styling for the main content */
+    max-width: 600%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container h1{
+    /* Heading 1 styling */
+    font-size: 30px;
+    text-align: center;
+    font-family: "Source Code Pro", monospace;
+    margin: 20px;
+
+}
+
+.container h2 {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    color: #646464;
+    margin: 15px;
+}
+
+.container p {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+}
+
+.container a {
+    /* Link styling with gradient background */
+    background: linear-gradient(90deg, #88544d, #8d8f52 40%, #3a9b45 69%, #4d5589);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+    transition: color 0.3s ease;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    display:inline-block;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.container a:hover{
+    -webkit-text-fill-color: #5d51e5;
+    color:#5d51e5;
+    text-decoration: none;
+}
+
+.container a { 
+    background: linear-gradient(90deg, #88544d, #8d8f52 40%, #3a9b45 69%, #4d5589);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+    transition: color 0.3s ease;
+    text-align: center;
+}
+
+.form-container a:hover {
+    -webkit-text-fill-color: #5d51e5;
+    color: #5d51e5;
+}
+
+label {
+    /* Label styling */
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    /* Input styling for text, email, and password fields */
+    width: 100%;
+    padding: 1.5vh;
+    margin-bottom: 2vh;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+button[type="submit"] {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 100px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: var(--main-font-stack);
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: var(--spacing-large) auto;
+    border: none;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+   transform: scale(1.05);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* CSS for age dropdown */
+#age {
+    /* Age dropdown styling */
+    width: calc(102% - 10px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    
+    
+}
+
+/* CSS for Gender dropdown */
+#gender {
+    width: calc(105% - 22px); 
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+@media (max-width: 480px) {
+.container {
+    padding: 20px;
+}
+}
+
+/* SKILLS MODAL CSS */
+#skills {
+cursor: pointer; /* Change cursor to pointer */
+background-color: #fff; /* Set initial background color */
+transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+/* size of labels inside the modal*/
+label {
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#skills:hover {
+background-color: #e6f2ff; 
+}
+
+#skills:focus {
+outline: none; 
+box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); 
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position for modal */
+    z-index: 1000; /* High z-index to overlay */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scrolling if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    justify-content: center; /* Center modal content */
+    align-items: center;
+} 
+
+.modal-content {
+    position: relative; /* Ensure the modal content is positioned relatively */
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 50%; 
+    max-width: 800px; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.close {
+    position: absolute; /* Position the close button absolutely */
+    top: 10px; /* Position it 10px from the top */
+    right: 10px; /* Position it 10px from the right */
+    color: #aaa;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #99312b;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+
+}
+
+#skillOptions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#skillOptions label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#skillOptions label:hover {
+    background-color: #e6f2ff;
+}
+
+#skillOptions input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#saveSkills {
+    width: 100%;
+    padding: 14px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#saveSkills:hover {
+    background-color: #003e80;
+}
+
+/* Modal Animation */
+@keyframes modalSlideIn {
+0% {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0);
+    opacity: 1;
+}
+}
+
+/* CAUSES MODAL */
+.causes-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.causes-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.causes-modal .close {
+    color: #e6f2ff;
+    font-size: 24px;
+    font-weight: bold;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.causes-modal .close:hover {
+    color: #666;
+}
+
+.causes-modal-content h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #444;
+    font-weight: 500;
+}
+
+#causeOptions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+
+#causeOptions label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#causeOptions label:hover {
+    background-color: #e6f2ff;
+}
+
+#cause {
+    cursor: pointer; 
+    background-color: #fff; 
+    transition: background-color 0.3s ease; 
+}
+
+#cause:hover {
+    background-color: #e6f2ff; 
+}
+
+#cause:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); 
+}
+
+#causeOptions input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#saveCauses {
+    width: 100%;
+    padding: 14px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    }
+
+#saveCauses:hover {
+background-color: #003e80;
+}
+
+/* Modal Animation */
+@keyframes modalSlideIn {
+0% {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0);
+    opacity: 1;
+}
+}
+
+#organizationtype {
+    width: calc(105% - 22px); /* Adjust width to fit within container */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%; /* Reduce max-width for smaller screens */
+        padding: 15px; /* Adjust padding */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    #age,
+    #gender,
+    #organizationtype {
+        font-size: 18px; /* Adjust font size for inputs */
+    }
+
+    button[type="submit"] {
+        padding: 10px; /* Adjust button padding */
+        font-size: 14px; /* Adjust button font size */
+    }
+
+    .modal-content {
+        width: 90%; /* Make modal content responsive */
+    }
+
+    #skillOptions,
+    #causeOptions {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust grid for smaller screens */
+    }
+}
+

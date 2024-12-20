@@ -1,0 +1,51 @@
+.donate-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #2ECC71, #27AE60);
+    color: #201f1f;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+}
+
+.donate-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(46, 204, 113, 0.2);
+}
+
+.donate-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.4);
+}
+
+/* Add loading state */
+.donate-button.loading {
+    background: #27AE60;
+    opacity: 0.8;
+    cursor: wait;
+}
+
+/* Add disabled state */
+.donate-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .donate-button {
+        font-size: 14px;
+        padding: 10px 24px;
+    }
+}

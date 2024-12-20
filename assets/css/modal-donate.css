@@ -1,0 +1,101 @@
+.donate-button  {
+    display: inline-block;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center; /* Center the button vertically */
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #2ECC71, #27AE60);
+    color: #201f1f;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donate-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow: auto;
+    transition: opacity 0.3s ease;
+}
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: slide-down 0.4s ease-out;
+}
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+.modal-content input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.modal-content button:hover {
+    background-color: #218838;
+}
+.modal-content button.cancel {
+    background-color: #6b747c;
+}
+.modal-content button.cancel:hover {
+    background-color: #596167;
+}
+@keyframes slide-down {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #e44444;
+}

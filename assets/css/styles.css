@@ -1,0 +1,240 @@
+/* CSS Root Variables */
+:root {
+    --main-font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --primary-color: #202e3c;
+    --secondary-color: #18BC9C;
+    --text-color: #FFFFFF;
+    --hover-text-color: #18BC9C;
+    --body-background-color: #fffaf0;
+    --font-size-large: 36px;
+    --font-size-medium: 20px;
+    --font-size-small: 18px;
+    --spacing-large: 20px;
+    --spacing-medium: 10px;
+    --spacing-small: 5px;
+}
+
+/* Imported Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+/* Navbar Style */
+.navbar {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: var(--spacing-large);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--main-font-stack);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: var(--font-size-small);
+    padding: var(--spacing-medium);
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.navbar-logo {
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.navbar-logo img {
+    max-height: 80px;
+    max-width: 150px;
+    flex-shrink: 0;
+}
+
+/* Footer Style */
+.footer {
+    background-color: var(--primary-color);
+    color: #f2f2f2;
+    padding: var(--spacing-large) 0;
+    text-align: center;
+    font-family: var(--main-font-stack);
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    margin-bottom: var(--spacing-medium);
+}
+
+.footer-links a {
+    color: #f2f2f2;
+    margin: 0 var(--spacing-small);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-copyright {
+    margin-top: var(--spacing-small);
+    font-size: 0.9em;
+}
+
+/* General Body and Font Styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: ubuntu-regular;
+    color: #333;
+    background-color: var(--body-background-color);
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    background-color: var(--body-background-color);
+    padding: var(--spacing-large) 100px;
+    margin: var(--spacing-small) auto;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.main-content h1 {
+    color: #444444;
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-small);
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.main-content h2 {
+    color: #DD4040;
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.main-content p {
+    color: #444444;
+    line-height: 1.8;
+    font-size: var(--font-size-small);
+    margin-bottom: var(--spacing-small);
+}
+
+/* Button Styles */
+.gradient-button {
+    display: inline-block;
+    padding: 12px 100px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: var(--main-font-stack);
+    color: #1A0505;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: var(--spacing-large);
+}
+
+.gradient-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #F99B8F, #E0E382 40%, #53E965 69%, #737FD0);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-small);
+    margin-bottom: var(--spacing-small);
+}
+
+/* Image Styles */
+.banner-image, .sdg-image {
+    border-radius: 8px;
+    max-width: 1000px;
+    max-height: 1000px;
+}
+
+/* Flexbox Layout for Content Section */
+.content-section {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+
+.content-section p {
+    font-size: var(--font-size-medium);
+    text-align: start;
+    font-family: var(--main-font-stack);
+}
+
+.content-image {
+    flex: 1;
+    max-width: 50%;
+    margin-right: 25px;
+    border-radius: 8px;
+}
+
+.content-text {
+    flex: 1;
+    max-width: 50%;
+    margin-left: 20px;
+    text-align: start;
+}
+
+.text-and-image {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Middle Line Style */
+.full-width-hr {
+    width: calc(100% + 200px);
+    margin-left: -100px;
+    border-color: #ccc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+    }
+
+    .content-image, .content-text {
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .content-image {
+        margin-bottom: 20px;
+        max-width: 50%;
+    }
+
+    .main-content h1 {
+        font-size: 24px;
+    }
+}
+
+
+
+
+
