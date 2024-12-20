@@ -19,7 +19,7 @@ include '../components/navbar.php';
     </div>
     <div class="team">
         <div class="member">
-            <div class="advisor_thumb"><img src="../assets/images/us/aga.jpg" alt=""></div>
+            <div class="advisor_thumb"><img src="../../assets/images/us/aga.jpg" alt=""></div>
             <div class="single_advisor_details_info">
                 <h6>Agather Medina</h6>
                 <p class="designation">Founder &amp; CEO</p>
@@ -43,7 +43,7 @@ include '../components/navbar.php';
             </div>
         </div>
         <div class="member">
-            <div class="advisor_thumb"><img src="../assets/images/us/raf.png" alt=""></div>
+            <div class="advisor_thumb"><img src="../../assets/images/us/raf.png" alt=""></div>
             <div class="single_advisor_details_info">
                 <h6>Rafael Miguel Gerolaga</h6>
                 <p class="designation">Developer &amp; CFO</p>

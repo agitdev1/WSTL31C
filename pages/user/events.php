@@ -1,18 +1,18 @@
 <?php
-include '../components/navbar2.php';
+include '../../components/navbar2.php';
 // events list
 $events = [
     [
-        'image' => '../assets/images/event1.jpg',
+        'image' => '../../assets/images/event1.jpg',
         'title' => 'Event Volunteers Needed for Feline Frolic Event',
         'location' => 'White Sand Beach, Coastal City',
         'date' => 'Dec 20, 2024',
         'time' => '07:00 AM - 11:00 AM',
         'organization' => 'Animal Protectors',
-        'redirect' => 'vol-event.php'
+        'redirect' => '../vol-event.php'
     ],
     [
-        'image' => '../assets/images/event2.jpg',
+        'image' => '../../assets/images/event2.jpg',
         'title' => 'Luntiang Marikina: Marikina River Clean Up Activity for November 2024',
         'location' => '123 Charity Street, Green City',
         'date' => 'Jan 10, 2025',
@@ -21,7 +21,7 @@ $events = [
         'redirect' => 'vol-event.php'
     ],
     [
-        'image' => '../assets/images/event3.png',
+        'image' => '../../assets/images/event3.png',
         'title' => 'Sacks of Rice for Karinderia ni Mang Urot',
         'location' => '453 Giving Street, Global City',
         'date' => 'Jan 12, 2025',
@@ -30,7 +30,7 @@ $events = [
         'redirect' => 'vol-donate.php'
     ],
     [
-        "image" => "../assets/images/events/event1.png",
+        "image" => "../../assets/images/events/event1.png",
         "title" => "Project Baon, A Day of Volunteer Service",
         "location" => "789 Charity Lane, Hope Town",
         "date" => "Mar 15, 2025",
@@ -39,7 +39,7 @@ $events = [
         "redirect" => 'vol-event.php'
     ],
     [
-        "image" => "../assets/images/events/event2.png",
+        "image" => "../../assets/images/events/event2.png",
         "title" => "Feed the Hungry",
         "location" => "321 Green Park, Nature City",
         "date" => "Apr 22, 2025",
@@ -48,7 +48,7 @@ $events = [
         "redirect" => 'vol-event.php'
     ],
     [
-        "image" => "../assets/images/events/event3.png",
+        "image" => "../../assets/images/events/event3.png",
         "title" => "Blood Donation Volunteer Support",
         "location" => "654 Health Blvd, Wellness City",
         "date" => "May 5, 2025",
@@ -64,9 +64,9 @@ $events = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upcoming Volunteering Events</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
-    <link rel="stylesheet" href="../assets/css/events.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/events.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -107,7 +107,7 @@ $events = [
         <?php endforeach; ?>
     </div>
 </div>
-<?php require_once '../components/footer2.php'; ?>
+<?php require_once '../../components/footer2.php'; ?>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const galleryItems = document.querySelectorAll('.gallery-item');
@@ -120,5 +120,6 @@ $events = [
             });
         });
     });
+    </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-include '../components/navbar2.php';
+include '../../components/navbar2.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,10 +7,10 @@ include '../components/navbar2.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donation Events</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/css/modal-donate.css"> 
+    <link rel="stylesheet" href="../../assets/css/modal-donate.css"> 
 </head>
 <body>
 <div class="main-content">
@@ -19,7 +19,7 @@ include '../components/navbar2.php';
         <?php
         $events = [
             [
-                'image' => '../assets/images/donation/tulong.jpg',
+                'image' => '../../assets/images/donation/tulong.jpg',
                 'alt' => 'Operation Tulong Lycean',
                 'desc' => 'Operation Tulong Lycean: Donation for Bagyong Kristine Victims',
                 'location' => '123 Intramuros, Manila City',
@@ -28,7 +28,7 @@ include '../components/navbar2.php';
                 'organization' => 'LPU Manila'
             ],
             [
-                'image' => '../assets/images/donation/story.png',
+                'image' => '../../assets/images/donation/story.png',
                 'alt' => 'Storybooks for The Storytelling Project for XYZ Foundation',
                 'desc' => 'Storybooks for The Storytelling Project for XYZ Foundation',
                 'location' => '123 Tayuman, Manila City',
@@ -37,7 +37,7 @@ include '../components/navbar2.php';
                 'organization' => 'ABC Foundation'
             ],
             [
-                'image' => '../assets/images/donation/undies.jpg',
+                'image' => '../../assets/images/donation/undies.jpg',
                 'alt' => 'Funds for Underwear Donation for Typhoon Survivors ',
                 'desc' => 'Funds for Underwear Donation for Typhoon Survivors',
                 'location' => 'Sta. Mesa Heights, Quezon City',
@@ -46,7 +46,7 @@ include '../components/navbar2.php';
                 'organization' => 'Angat Buhay'
             ],
             [
-                'image' => '../assets/images/donation/food2.jpg',
+                'image' => '../../assets/images/donation/food2.jpg',
                 'alt' => 'Fund Raising for Food Donation Drive for XYZ Foster Home',
                 'desc' => 'Fund Raising for Food Donation Drive for XYZ Foster Home',
                 'location' => '789 Charity Lane, Hope Town, 54321',
@@ -55,7 +55,7 @@ include '../components/navbar2.php';
                 'organization' => 'Helping Hands'
             ],
             [
-                'image' => '../assets/images/donation/fund.jpg',
+                'image' => '../../assets/images/donation/fund.jpg',
                 'alt' => 'Fundraising for Typhoon Survivors in ABC Area',
                 'desc' => 'Fundraising for Typhoon Survivors in ABC Area',
                 'location' => '321 Green Park, Nature City, 98765',
@@ -64,7 +64,7 @@ include '../components/navbar2.php';
                 'organization' => 'ABC Foundation'
             ],
             [
-                'image' => '../assets/images/donation/clothes.jpg',
+                'image' => '../../assets/images/donation/clothes.jpg',
                 'alt' => 'Funds for Clothes Donation Drive for Typhoon ABC Survivors',
                 'desc' => 'Funds for Clothes Donation Drive for Typhoon ABC Survivors',
                 'location' => '654 Health Blvd, Wellness City, 11223',
@@ -75,7 +75,7 @@ include '../components/navbar2.php';
         ];
 
         foreach ($events as $event) {
-            echo '<div class="gallery-item" data-url="../pages/vol-donate.php">';
+            echo '<div class="gallery-item" data-url="../../pages/user/vol-donate.php">';
             echo '<img src="' . htmlspecialchars($event['image']) . '" alt="' . htmlspecialchars($event['alt']) . '">';
             echo '<div class="desc">' . htmlspecialchars($event['desc']) . '</div>';
             echo '<p class="card-location"><i class="fa fa-location-arrow" aria-hidden="true"></i><small>' . htmlspecialchars($event['location']) . '</small></p>';
@@ -136,7 +136,7 @@ include '../components/navbar2.php';
     });
 </script>
 
-<script src="../assets/js/modal-donate.js"></script>
-<?php require_once '../components/footer2.php'; ?>
+<script src="../../assets/js/modal-donate.js"></script>
+<?php require_once '../../components/footer2.php'; ?>
 </body>
 </html>

@@ -1,12 +1,6 @@
 <?php
 session_start();
-
-// Check if user is logged in and is an organization
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'organization') {
-    header('Location: ../pages/login.php'); // Corrected the path
-    exit;
-}
-include '../components/navbar3.php';
+include '../../components/navbar3.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +8,9 @@ include '../components/navbar3.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Selection</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
-    <link rel="stylesheet" href="../assets/css/post.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/post.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -46,9 +40,9 @@ include '../components/navbar3.php';
   </div>
   <!-- Footer -->
   <?php
-  include '../components/footer3.php';
+  include '../../components/footer3.php';
   ?>
 
-  <script src="../assets/js/post.js"></script>
+  <script src="../../assets/js/post.js"></script>
 </body>
 </html>
